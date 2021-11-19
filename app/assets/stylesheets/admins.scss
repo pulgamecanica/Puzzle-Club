@@ -1,0 +1,52 @@
+$blue: #0275d8;
+$light_gray: rgba(210, 210, 210, 0.6);
+$dark_gray: rgba(200, 200, 200, 1);
+
+* {
+	 box-sizing: border-box;
+	 padding: 0;
+	 margin: 0;
+}
+
+html {height: 100%}
+
+body {min-height: 100vh;}
+
+.admin-content
+{
+	width: 100vw;
+	height: 100vh;
+	.side_bar {
+		padding: 0;
+		margin: 0;
+		background-color: $light_gray;
+		.side-bar-container
+		{
+			width: 100%;
+			.side-link {
+				background-color: $dark_gray;
+				border-color: $dark_gray;
+				&:hover {
+					opacity: 0.5;
+				}
+			}
+			.home-btn {
+				&:hover a{
+					color: $blue !important;
+					text-decoration: underline !important;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (min-width: 1100px)
+{
+	.admin-content {
+		.side-bar-container {
+			.fixed-bar {
+				position: fixed;
+			}
+		}
+	}
+}

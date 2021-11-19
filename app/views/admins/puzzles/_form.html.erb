@@ -1,0 +1,83 @@
+<%= form_with(model: puzzle) do |form| %>
+  <% if puzzle.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(puzzle.errors.count, "error") %> prohibited this puzzle from being saved:</h2>
+
+      <ul>
+        <% puzzle.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="input-group form-field">
+    <div class="field-tag">
+      <div class="input-group-prepend" >
+        <span class="input-group-text tag-style">
+          <%= form.label :title %>
+        </span>
+      </div>
+    </div>
+    <%= form.text_field :title, class: 'form-control' %>
+  </div>
+
+  <div class="input-group form-field">
+    <div class="field-tag">
+      <div class="input-group-prepend" >
+        <span class="input-group-text tag-style">
+          <%= form.label :description %>
+        </span>
+      </div>
+    </div>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="input-group form-field">
+    <div class="field-tag">
+      <div class="input-group-prepend" >
+        <span class="input-group-text tag-style">
+          <%= form.label :pieces %>
+        </span>
+      </div>
+    </div>
+    <%= form.number_field :pieces, class: 'form-control' %>
+  </div>
+
+  <div class="input-group form-field">
+    <div class="field-tag">
+      <div class="input-group-prepend" >
+        <span class="input-group-text tag-style">
+          <%= form.label :start_date %>
+        </span>
+      </div>
+    </div>
+    <%= form.date_field :start_date, class: 'form-control' %>
+  </div>
+
+  <div class="input-group form-field">
+    <div class="field-tag">
+      <div class="input-group-prepend" >
+        <span class="input-group-text tag-style">
+          <%= form.label :end_date %>
+        </span>
+      </div>
+    </div>
+    <%= form.date_field :end_date, class: 'form-control' %>
+  </div>
+
+
+  <div class="field">
+    <% if puzzle.image.present? %>
+      <p>Current Image:</p>
+      <%= image_tag puzzle.image, class: 'form-image-field' %>
+    <% end %>
+    <br>
+    <%= form.label :image, class: 'display-6' %>
+    <%= form.file_field :image, class: 'form-field text-center mb-3 form-control' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Submit', :class => 'form-control btn btn-primary'  %>
+  </div>
+<% end %>

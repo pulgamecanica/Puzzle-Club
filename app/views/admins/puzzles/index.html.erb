@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+<p class="text-end"><%= link_to 'New puzzle', new_puzzle_path, class: 'btn btn-primary m-3' %></p>
+
+<div class="container">
+  <% @puzzles.each do |puzzle| %>
+    <div class="post-card">
+      <p class="spy-eye text-end">
+        <%= link_to edit_puzzle_path(puzzle), class: 'btn btn-primary m-3' do %>
+          <i class="fas fa-cogs"></i>
+          <% end %>
+      </p>
+      <%= link_to puzzle_path(puzzle), class: 'text-decoration-none' do %>
+        <div class="card mb-3">
+         
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <% if puzzle.image.present? %>
+                  <div class="header_image" style="background-image: url(<%= url_for(puzzle.image) %>);"></div>
+                <% end %>
+              </div>
+              <div class="col-md-10">
+                <h5 class="card-title"><%= puzzle.title %></h5>
+                <p class="card-text"><%= puzzle.description.truncate(150) %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

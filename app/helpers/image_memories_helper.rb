@@ -1,0 +1,2 @@
+module ImageMemoriesHelper
+end

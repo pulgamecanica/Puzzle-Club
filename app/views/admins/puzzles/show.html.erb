@@ -1,0 +1,157 @@
+<%= link_to 'Back', puzzles_path, class: 'btn btn-dark m-3' %>
+<div class='row m-2'>
+  <div class="col-md-6">
+    <div class="card">
+      <h3 class="text-center m-1"><%= @puzzle.title %></h3>
+      <hr>
+      <% if @puzzle.image.present? %>
+        <%= image_tag @puzzle.image, class: 'card-img-top'%>
+      <% end %>
+      <div class="card-body">
+        <p class="card-text">Description: <%= @puzzle.description %></p>
+        <p class="card-text">Total: <%= @puzzle.pieces %> pieces.</p>
+        <div class="d-flex justify-content-between">
+          <%= link_to edit_puzzle_path(@puzzle), class: 'btn btn-primary col-5' do %>
+            <i class="fas fa-cogs"></i>
+          <% end %>
+          <p class="text-end"><span class="badge badge-dark bg-secondary"><%= @puzzle.start_date %> - <%= @puzzle.end_date %></span></p>
+        </div>
+        <%=  link_to 'Delete', puzzle_path(@puzzle), method: :delete, class: 'btn btn-danger mt-3 d-block', data: {confirm: "Are you sure, you want to delete #{@puzzle.title} ?"} %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <% if @puzzle.memories.any? %>
+      <div class="card">
+        <h3 class="text-center m-1">Memories</h3>
+        <hr>
+        <% @puzzle.memories.each do |memory| %>
+          <% memory.image_memories.each do |memory_image| %>
+            <div class="card-body">
+              <h6 class="card-title text-end"><span class="badge badge-sucess bg-success">Image Memory</span></h6>
+            </div>
+            <% if memory_image.image.present? %>
+              <%= image_tag memory_image.image, alt: memory_image.alt %>
+            <% else %>
+            <div class="card-body">
+              <h5 class="card-title">Coudn't find the image... :(</h5>
+            </div>
+            <% end %>
+          <% end %>
+
+          <% memory.text_memories.each do |text_memory| %>
+
+            <div class="card-body">
+              <h6 class="card-title text-end"><span class="badge badge-sucess bg-success">Text Memory</span></h6>
+
+              <h5 class="card-title"><%= text_memory.title %></h5>
+              <p class="card-text"><%= text_memory.description %></p>
+            </div>
+          <% end %>
+          <h6 class="text-center text-primary"><%= memory.user_names42 %> (<%= memory.created_at.strftime("%d/%m/%Y") %>)</h6>
+          <% unless @puzzle.memories.last.eql?(memory) %>
+            <hr>
+          <% end %>
+        <% end %>
+      </div>
+    <% else %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">No Memories so far...</h5>
+        </div>
+      </div>
+    <% end %>
+
+    <div class="card mt-3">
+      <h6 class="text-center mt-3">Add a memory</h6>
+      <%= form_with(model: @memory) do |form| %>
+        <% if @memory.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@memory.errors.count, "error") %> prohibited this memory from being saved:</h2>
+            <ul>
+              <% @memory.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+        <div class="container">
+          <div class="input-group form-field">
+            <div class="field-tag">
+              <div class="input-group-prepend" >
+                <span class="input-group-text tag-style">
+                  <%= form.label :tags %>
+                </span>
+              </div>
+            </div>
+            <%= form.text_field :user_names42, class: 'form-control' %>
+          </div>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center">
+          <span>
+            <%= form.hidden_field :puzzle_id, value: @puzzle.id %>
+
+            <%= form.fields_for :image_memories do |image_form| %>
+              <div class="input-group form-field">
+                <div class="field-tag">
+                  <div class="input-group-prepend" >
+                    <span class="input-group-text tag-style">
+                      <%= image_form.label :alt %>
+                    </span>
+                  </div>
+                </div>
+                <%= image_form.text_field :alt, class: 'form-control' %>
+              </div>
+
+              <div class="field">
+                <%= image_form.file_field :image, class: 'form-field text-center mb-3 form-control' %>
+              </div>
+            <% end %>
+          </span>
+          <span>
+          <%= button_tag(type: "submit", class: 'btn btn-primary btn-lg m-3') do %>
+            <i class="fas fa-images"></i>
+          <% end %>
+          </span>
+        </div>
+        <hr>
+        <div class="d-flex justify-content-center container">
+          <span>
+            <%= form.hidden_field :puzzle_id, value: @puzzle.id %>
+            <%= form.fields_for :text_memories do |text_form| %>
+              <div class="input-group form-field">
+                <div class="field-tag">
+                  <div class="input-group-prepend" >
+                    <span class="input-group-text tag-style">
+                      <%= text_form.label :title %>
+                    </span>
+                  </div>
+                </div>
+                <%= text_form.text_field :title, class: 'form-control' %>
+              </div>
+
+              <div class="input-group form-field">
+                <div class="field-tag">
+                  <div class="input-group-prepend" >
+                    <span class="input-group-text tag-style">
+                      <%= text_form.label :description %>
+                    </span>
+                  </div>
+                </div>
+                <%= text_form.text_area :description, class: 'form-control' %>
+              </div>
+            <% end %>
+          </span>
+          <span>
+          <%= button_tag(type: "submit", class: 'btn btn-primary btn-lg m-3') do %>
+            <i class="fas fa-paragraph"></i>
+          <% end %>
+          </span>
+        </div>
+      <% end %>
+    </div>
+
+
+  </div>
+</div>
