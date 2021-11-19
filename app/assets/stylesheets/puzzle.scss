@@ -27,7 +27,16 @@ $light_gray: rgba(210, 210, 210, 0.6);
 .no-border-card {
 	border: none;
 }
-
+.memory-container {
+	position: relative;
+	.delete-memory {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: auto !important;
+		margin-right: 10px !important;
+	}
+}
 .form-field {
 	background-color: $light_gray;
 	border-radius: 1em;

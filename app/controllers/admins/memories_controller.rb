@@ -1,15 +1,10 @@
 module Admins
 	class MemoriesController < AdminsController
-		before_action :set_puzzle
+		before_action :set_puzzle, only: %i[ edit update create ]
 		before_action :set_memory, only: %i[ edit update destroy ]
-
-		def new
-			@memory = @puzzle.memories.build
-		end
 
 		def create
 		  @memory = @puzzle.memories.build(memory_params)
-
 		  if @memory.save
 		  	redirect_to puzzle_path(@puzzle), notice: "Success! Your Memory has been updated/created!"
 		  else
@@ -18,9 +13,10 @@ module Admins
 		end
 
 		def destroy
+		  puzzle_id = @memory.puzzle.id
 		  @memory.destroy
 		  respond_to do |format|
-		    format.html { redirect_to puzzle_url, notice: "Memory was successfully destroyed." }
+		    format.html { redirect_to puzzle_path(puzzle_id), notice: "Memory was successfully destroyed." }
 		    format.json { head :no_content }
 		  end
 		end

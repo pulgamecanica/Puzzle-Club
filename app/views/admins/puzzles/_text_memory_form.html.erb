@@ -1,0 +1,46 @@
+<%= form_with(model: memory) do |form| %>
+  <div class="container">
+    <div class="input-group form-field">
+      <div class="field-tag">
+        <div class="input-group-prepend" >
+          <span class="input-group-text tag-style">
+            <%= form.label :tags %>
+          </span>
+        </div>
+      </div>
+      <%= form.text_field :user_names42, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center container">
+    <span>
+      <%= form.hidden_field :puzzle_id, value: puzzle.id %>
+      <%= form.fields_for :text_memories do |text_form| %>
+        <div class="input-group form-field">
+          <div class="field-tag">
+            <div class="input-group-prepend" >
+              <span class="input-group-text tag-style">
+                <%= text_form.label :title %>
+              </span>
+            </div>
+          </div>
+          <%= text_form.text_field :title, class: 'form-control' %>
+        </div>
+        <div class="input-group form-field">
+          <div class="field-tag">
+            <div class="input-group-prepend" >
+              <span class="input-group-text tag-style">
+                <%= text_form.label :description %>
+              </span>
+            </div>
+          </div>
+          <%= text_form.text_area :description, class: 'form-control' %>
+        </div>
+      <% end %>
+    </span>
+    <span>
+    <%= button_tag(type: "submit", class: 'btn btn-primary btn-lg m-3') do %>
+      <i class="fas fa-paragraph"></i>
+    <% end %>
+    </span>
+  </div>
+<% end %>

@@ -1,0 +1,40 @@
+<%= form_with(model: memory) do |form| %>
+  <div class="container">
+    <div class="input-group form-field">
+      <div class="field-tag">
+        <div class="input-group-prepend" >
+          <span class="input-group-text tag-style">
+            <%= form.label :tags %>
+          </span>
+        </div>
+      </div>
+      <%= form.text_field :user_names42, class: 'form-control' %>
+    </div>
+  </div>
+  <div class="d-flex justify-content-center">
+    <span>
+      <%= form.hidden_field :puzzle_id, value: puzzle.id %>
+      <%= form.fields_for :image_memories do |image_form| %>
+        <div class="input-group form-field">
+          <div class="field-tag">
+            <div class="input-group-prepend" >
+              <span class="input-group-text tag-style">
+                <%= image_form.label :alt %>
+              </span>
+            </div>
+          </div>
+          <%= image_form.text_field :alt, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= image_form.file_field :image, class: 'form-field text-center mb-3 form-control' %>
+        </div>
+      <% end %>
+    </span>
+    <span>
+    <%= button_tag(type: "submit", class: 'btn btn-primary btn-lg m-3') do %>
+      <i class="fas fa-images"></i>
+    <% end %>
+    </span>
+  </div>
+<% end %>
