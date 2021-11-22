@@ -11,7 +11,7 @@
       <%= form.text_field :user_names42, class: 'form-control' %>
     </div>
   </div>
-  <div class="d-flex justify-content-center">
+  <div class="d-flex justify-content-center container">
     <span>
       <%= form.hidden_field :puzzle_id, value: puzzle.id %>
       <%= form.fields_for :image_memories do |image_form| %>
@@ -33,7 +33,7 @@
     </span>
     <span>
     <%= button_tag(type: "submit", class: 'btn btn-primary btn-lg m-3') do %>
-      <i class="fas fa-images"></i>
+      <span class="material-icons">image</span>
     <% end %>
     </span>
   </div>

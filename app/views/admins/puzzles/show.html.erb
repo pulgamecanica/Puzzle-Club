@@ -12,7 +12,7 @@
         <p class="card-text">Total: <%= @puzzle.pieces %> pieces.</p>
         <div class="d-flex justify-content-between">
           <%= link_to edit_puzzle_path(@puzzle), class: 'btn btn-primary col-5' do %>
-            <i class="fas fa-cogs"></i>
+            <span class="material-icons">edit</span>
           <% end %>
           <p class="text-end"><span class="badge badge-dark bg-secondary"><%= @puzzle.start_date %> - <%= @puzzle.end_date %></span></p>
         </div>
@@ -27,14 +27,14 @@
         <hr>
         <% @puzzle.memories.each do |memory| %>
           <div class="container memory-container">
-            <%=  link_to 'Delete', memory, method: :delete, class: 'btn btn-danger delete-memory', data: {confirm: "Are you sure, you want to delete this memory ?"} %>
+            <%=  link_to 'Delete', memory, method: :delete, class: 'btn btn-danger delete-memory btn-sm', data: {confirm: "Are you sure, you want to delete this memory ?"} %>
             <% memory.image_memories.each do |memory_image| %>
               <div class="card-body">
                 <h6 class="card-title text-start"><span class="badge badge-sucess bg-success">Image Memory</span></h6>
+                <% if memory_image.image.present? %>
+                  <%= image_tag memory_image.image, class: "rounded img-fluid", alt: memory_image.alt %>
+                <% else %>
               </div>
-              <% if memory_image.image.present? %>
-                <%= image_tag memory_image.image, alt: memory_image.alt %>
-              <% else %>
               <div class="card-body">
                 <h5 class="card-title">Coudn't find the image... :(</h5>
               </div>
