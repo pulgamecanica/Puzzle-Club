@@ -20,6 +20,9 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+
+gem 'pg', '~> 1.1'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -43,7 +46,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   # Postgtresql
-  gem 'pg', '~> 1.1'
+  gem 'sqlite3', '~> 1.4'
 end
 
 group :test do
