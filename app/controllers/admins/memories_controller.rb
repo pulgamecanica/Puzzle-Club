@@ -20,7 +20,7 @@ module Admins
 		    format.json { head :no_content }
 		  end
 		end
-
+		
 		private
 
 		  def set_puzzle
@@ -32,7 +32,7 @@ module Admins
 		  end
 
 		  def memory_params
-		    params.require(:memory).permit(:user_names42, :puzzle_id, :start_date, :end_date, image_memories_attributes: [:alt, :image], text_memories_attributes: [:description, :title, :memory_id])
+		    params.require(:memory).permit(:user_names42, :puzzle_id, :start_date, :end_date, image_memories_attributes: [:alt, :active, :image], text_memories_attributes: [:description, :active, :title, :memory_id])
 		  end
 	end
 end

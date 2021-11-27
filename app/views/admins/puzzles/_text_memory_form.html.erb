@@ -15,6 +15,7 @@
     <span>
       <%= form.hidden_field :puzzle_id, value: puzzle.id %>
       <%= form.fields_for :text_memories do |text_form| %>
+        <%= text_form.hidden_field :active, value: true %>
         <div class="input-group form-field">
           <div class="field-tag">
             <div class="input-group-prepend" >

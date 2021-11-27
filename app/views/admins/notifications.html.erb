@@ -1,0 +1,76 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container p-0">
+    <h1 class="display-4 text-center">Notifications</h1>
+    <ul>
+    	<li><p class="lead">Image Memories to review <span class="badge badge-pill bg-secondary"><%= @image_memories.count %></span></p></li>
+    	<li><p class="lead">Text Memories to review <span class="badge badge-pill bg-secondary"><%= @text_memories.count %></span></p></li>
+    </ul>
+    <div class="row m-0 p-2 d-flex justify-content-center">
+	    <% @image_memories.each do |memory| %>
+			<div class="card col-sm-6 col-md-4 col-lg-3 p-0 m-1 border-secondary">
+			  <span class="badge badge-pill bg-warning notification-image-badge">image</span>
+			  <span class="p-0 m-0 notification-image-container">
+				<% if memory.image.present? %>
+					<%= image_tag memory.image, class: 'rounded img-fluid' %>
+				<% else %>
+					<p class="card-text">No image available...</p>
+				<% end %>
+				<p class="text-center bg-none notification-image-puzzle-button">
+					<%= link_to memory.memory.puzzle, class: 'btn btn-outline-primary bg-light' do %>
+						<%= memory.memory.puzzle.title %>
+					<% end %>
+			  	</p>
+			  </span>
+			  <div class="card-body pt-1">
+			    <p class="card-text m-0">Alt: <%= memory.alt %></p>
+			    <p class="card-text border border-secondary rounded d-inline-block p-1 m-0"><%= memory.memory.user_names42 %></p>
+			  	<hr>
+			    <div class="d-flex m-auto justify-content-between">
+			    	<div>
+			    		<%= form_with(model: memory) do |form| %>
+							<%= form.hidden_field :active, value: true %>
+							<%= button_tag(type: "submit", class: 'btn btn-success btn-sm m-3') do %>
+      							<span class="material-icons">task_alt</span>
+    						<% end %>
+			    		<% end %>
+			  		</div>
+			  		<div class="mt-auto mb-auto">
+			    		<%= link_to 'Destroy', memory, method: :delete, class: 'btn btn-danger btn-sm' %>
+			  		</div>
+
+			  	</div>
+			  </div>
+			</div>
+		<% end %>
+		<% @text_memories.each do |memory| %>
+			<div class="card p-1 col-sm-6 col-md-4 col-lg-3 m-1 border-secondary">
+			  <p class="text-end m-0 p-0"><span class="badge badge-pill bg-info">text</span></p>
+			  <div class="card-body">
+			    <h4 class="card-title">Title: <%= memory.title %></h4>
+			    <p class="card-text p-0 m-0">Descr.: <%= memory.description %></p>
+			    <p class="card-text border border-secondary rounded d-inline-block p-1"><%= memory.memory.user_names42 %></p>
+			    <p class="text-center p-0 m-0">
+				    <%= link_to memory.memory.puzzle, class: 'btn btn-outline-primary' do %>
+				  		<%= memory.memory.puzzle.title %>
+				  	<% end %>
+			  	</p>
+			    <hr>
+			    <div class="d-flex m-auto justify-content-between">
+			    	<div>
+			    		<%= form_with(model: memory) do |form| %>
+							<%= form.hidden_field :active, value: true %>
+							<%= button_tag(type: "submit", class: 'btn btn-success btn-sm m-3') do %>
+      							<span class="material-icons">task_alt</span>
+    						<% end %>
+			    		<% end %>
+			    	</div>
+			    	<div class="mt-auto mb-auto">
+			    		<%= link_to 'Destroy', memory, method: :delete, class: 'btn btn-danger btn-sm' %>
+			    	</div>
+			  	</div>
+			  </div>
+			</div>
+		<% end %>
+	</div>
+  </div>
+</div>

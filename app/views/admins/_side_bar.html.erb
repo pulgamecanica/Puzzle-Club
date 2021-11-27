@@ -1,10 +1,19 @@
 <div class="container side-bar-container">
 	<div class="text-center fixed-bar">
 		<h3 class="text-center home-btn">
-			<%= link_to puzzles_path, class: "text-decoration-none text-dark" do%>
-				Admin <i class="fas fa-home m-3"></i>
+			<%= link_to admin_home_path, class: "text-decoration-none text-dark" do%>
+				<span class="material-icons">home</span> Admin
 			<% end %>
 		</h3>
-		<%= link_to "Puzzles", puzzles_path, class: "btn btn-light btn-lg p-2 side-link mb-3 d-block" %>
+		<%= link_to puzzles_path, class: "btn btn-light btn-lg p-2 side-link mb-3 d-block d-flex justify-content-around" do %>
+			Puzzles <span class="material-icons">extension</span>
+		<% end %>
+		<%= link_to notifications_path, class: "btn btn-light btn-lg p-2 side-link mb-3 d-block d-flex justify-content-around" do %>
+			<% unless @notifications_count != 0 %>
+				Notifications <span class="material-icons text-secondary">notifications_active</span>
+			<% else %>
+				Notifications <span class="material-icons text-danger shake">notifications_active</span>
+			<% end %>
+		<% end %>
 	</div>
 </div>
