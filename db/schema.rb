@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_25_223823) do
+ActiveRecord::Schema.define(version: 2021_11_29_123548) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 2021_11_25_223823) do
     t.index ["puzzle_id"], name: "index_memories_on_puzzle_id"
   end
 
+  create_table "puzzle_contenders", force: :cascade do |t|
+    t.integer "puzzle_id", null: false
+    t.integer "tournament_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["puzzle_id"], name: "index_puzzle_contenders_on_puzzle_id"
+    t.index ["tournament_id"], name: "index_puzzle_contenders_on_tournament_id"
+  end
+
   create_table "puzzles", force: :cascade do |t|
     t.string "title"
     t.text "description"
@@ -91,9 +100,28 @@ ActiveRecord::Schema.define(version: 2021_11_25_223823) do
     t.index ["memory_id"], name: "index_text_memories_on_memory_id"
   end
 
+  create_table "tournaments", force: :cascade do |t|
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string "title"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer "puzzle_contender_id", null: false
+    t.string "username"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["puzzle_contender_id"], name: "index_votes_on_puzzle_contender_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "image_memories", "memories"
   add_foreign_key "memories", "puzzles"
+  add_foreign_key "puzzle_contenders", "puzzles"
+  add_foreign_key "puzzle_contenders", "tournaments"
   add_foreign_key "text_memories", "memories"
+  add_foreign_key "votes", "puzzle_contenders"
 end
