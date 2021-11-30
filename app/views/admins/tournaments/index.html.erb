@@ -25,7 +25,7 @@
               <div class="col-md-8">
                 <p class="card-text text-center text-dark">Contenders</p>
                 <div class="d-flex flex-wrap justify-content-center">
-                  <% tournament.puzzle_contenders.each do |contender| %>
+                  <% tournament.puzzle_contenders.map { |x| [x.votes.count, x] }.sort.reverse.map {|x| x.second}.each do |contender| %>
                     <% if contender.puzzle.image.present? %>
                       <div class="tournament_puzzle_image" style="background-image: url(<%= url_for(contender.puzzle.image) %>);"><p class="vote-count lead"><span class="badge badge-pill text-secondary bg-light"><%= contender.votes.count %><span class="material-icons vote-icon">favorite</span></span></p></div>
                     <% else %>
