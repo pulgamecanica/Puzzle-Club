@@ -24,7 +24,7 @@ module Admins
 			end
 
 			def puzzle_contender_params
-				params.require(:puzzle_contender).permit(:puzzle_id, :tournament_id)
+				params.require(:puzzle_contender).permit(:puzzle_id, :puzzle_contender_id, :tournament_id)
 			end
 	end
 end

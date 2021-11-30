@@ -16,14 +16,15 @@
             <span>
               <% element.second.each do |contender| %>
                 <% if contender.second.persisted? %>
-                  <p>
+                  <div class="puzzle-contender-info">
                     <%= link_to contender.second, method: :delete, class: "text-decoration-none" do %>
                       <span class="material-icons trash-icon text-danger text">delete</span>
                     <% end %>
                     <%= link_to contender.second.puzzle, class: "text-decoration-none" do %>
                       <%= contender.second.puzzle.title %>
                     <% end %>
-                  </p>
+                    <%= render "vote_contender_form", vote: @vote, contender: contender.second %>
+                  </div>
                   <% unless contender.eql?(element.second.last) %>
                     <hr>
                   <% end %>

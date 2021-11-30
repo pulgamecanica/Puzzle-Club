@@ -77,6 +77,14 @@ body {min-height: 100vh;}
 		border-radius: 0.5rem !important;
 	}
 }
+.puzzle-contender-info {
+	display: inline;
+	form {
+		color: $blue;
+		vertical-align: middle;
+		display: inline-block;
+	}
+}
 .vote-icon {
 	color: pink;
 	margin-left: 0.2rem;

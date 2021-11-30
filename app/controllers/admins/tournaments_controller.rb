@@ -1,4 +1,3 @@
-
 module Admins
   class TournamentsController < AdminsController
     before_action :set_tournament, only: %i[ show edit update destroy ]
@@ -12,6 +11,7 @@ module Admins
     def show
       @total_votes = @tournament.puzzle_contenders.map { |contender| contender.votes.count }.sum
       @contender = PuzzleContender.new
+      @vote = Vote.new
     end
 
     # GET /tournaments/new

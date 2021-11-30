@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :tournaments
     resources :text_memories
     resources :image_memories
-    resources :puzzle_contenders, only: [:new, :create, :destroy]
+    resources :puzzle_contenders, only: [:new, :create, :destroy] do
+      resources :votes
+    end
   end
 end

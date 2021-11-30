@@ -64,7 +64,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 #IMAGES
-
 gem "image_processing", ">= 1.2"
+
+#oAuth for API requests
+gem 'oauth2'
 
 gem "aws-sdk-s3", require: false

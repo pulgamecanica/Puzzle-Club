@@ -1,0 +1,11 @@
+<%= form_with(model: [contender, vote]) do |form| %>
+
+	<%= form.hidden_field :vote, value: vote %>
+	<%= form.hidden_field :username, value: "arosado-" %>
+
+
+	<div class="actions text-center">
+    	<%= form.submit "vote", class: "btn btn-primary btn-sm" do %>
+		<% end %>
+  	</div>
+<% end %>
