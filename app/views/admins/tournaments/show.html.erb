@@ -15,11 +15,13 @@
           <li class="list-group-item d-flex justify-content-around align-items-center">
             <span>
               <% element.second.each do |contender| %>
-                <%= link_to contender.second.puzzle, class: "text-decoration-none" do %>
-                  <p><%= contender.second.puzzle.title %></p>
-                <% end %>
-                <% unless contender.eql?(element.second.last) %>
-                  <hr>
+                <% if contender.second.persisted? %>
+                  <%= link_to contender.second.puzzle, class: "text-decoration-none" do %>
+                    <p><%= contender.second.puzzle.title %></p>
+                  <% end %>
+                  <% unless contender.eql?(element.second.last) %>
+                    <hr>
+                  <% end %>
                 <% end %>
               <% end %>
             </span>
@@ -33,11 +35,15 @@
     </div>
   </p>
   <hr class="my-4">
+  <div class="card ms-5 me-5 text-center">
+    <div class="card-body">
+      <h5 class="card-title">New Contender</h5>
+      <%= render "contenders_form", tournament: @tournament, contender: @contender %>
+    </div>
+  </div>
+  <hr class="my-4">
   <p class="lead text-center p-2 m-2">
-    <%= link_to 'New Contender', edit_tournament_path(@tournament), class: "btn btn-primary btn-lg" %>
-    <%= link_to 'Edit', edit_tournament_path(@tournament), class: "btn btn-primary btn-lg" %>
-  </p>
-  <p class="lead text-center p-2 m-2">
+    <%= link_to 'Edit', edit_tournament_path(@tournament), class: "btn btn-primary btn-lg" %>  
     <%= link_to 'Destroy', @tournament, method: :delete, class: "btn btn-danger btn-lg" %>
   </p>
 </div>

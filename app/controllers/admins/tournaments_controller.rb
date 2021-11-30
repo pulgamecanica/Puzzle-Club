@@ -11,6 +11,7 @@ module Admins
     # GET /tournaments/1 or /tournaments/1.json
     def show
       @total_votes = @tournament.puzzle_contenders.map { |contender| contender.votes.count }.sum
+      @contender = PuzzleContender.new
     end
 
     # GET /tournaments/new

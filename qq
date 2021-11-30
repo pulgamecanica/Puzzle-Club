@@ -1,0 +1,83 @@
+[33mcommit ee892171b1d697d1ceaca392101c98d5c2edd634[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Tue Nov 30 01:08:59 2021 +0000
+
+    Created Tournaments
+
+[33mcommit edd0b3f57290036ccb2a049ae66e0000e424ede9[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Mon Nov 29 14:59:33 2021 +0000
+
+    Created tournament migrations
+
+[33mcommit 83d551d8dcf683b6af005b544dbc2b5ffeee12e3[m[33m ([m[1;31mheroku/master[m[33m)[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Sat Nov 27 06:57:21 2021 +0000
+
+    Added Notifications
+
+[33mcommit fb741ddf463f88b3942952ced557c871923c28a0[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Mon Nov 22 22:54:32 2021 +0000
+
+    PG
+
+[33mcommit c03f08a06842340a933fdb1ef4b5311a7e6110e5[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Mon Nov 22 22:52:21 2021 +0000
+
+    Sqlite only dev, Postgresql production
+
+[33mcommit 1cd9b4ee031a843b085da6ba20f2d0140118d031[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Mon Nov 22 22:49:17 2021 +0000
+
+    Fixed index images and changed FontAwesome
+
+[33mcommit 8b18be7449c345cd838d605a1398554564c49872[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Fri Nov 19 12:54:05 2021 +0000
+
+    Location 2nd try
+
+[33mcommit 9b900485aa013ce0f711c41bf97b26dabd71f0b9[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Fri Nov 19 12:50:59 2021 +0000
+
+    Set up location
+
+[33mcommit c299303ebe265581cafac1f78f86155581710bb7[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Fri Nov 19 12:43:11 2021 +0000
+
+    Amazon S3 setup
+
+[33mcommit f9dfa80b569279571afa0bd11568c4cec8834391[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Fri Nov 19 12:36:11 2021 +0000
+
+    Setup Amazon
+
+[33mcommit 14e873d0b6e297da310ed4abb51bb8c6305effe3[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Fri Nov 19 12:19:57 2021 +0000
+
+    Postgre bundled
+
+[33mcommit f2433765bb5359bebe7857b2788428306ac3c4c1[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Fri Nov 19 11:37:19 2021 +0000
+
+    PG
+
+[33mcommit 8f7367fa7685760354bd14af05305f996ba1f5cd[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Fri Nov 19 11:02:09 2021 +0000
+
+    Added Delete Button to Memories
+
+[33mcommit 1dd4f455308b01232c4584de35df6dd1866562c2[m
+Author: pulgamecanica <pulgamecanica11@gmail.com>
+Date:   Fri Nov 19 10:13:55 2021 +0000
+
+    Seted up DB and Admin

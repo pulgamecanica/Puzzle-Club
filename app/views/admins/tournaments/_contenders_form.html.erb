@@ -1,0 +1,23 @@
+<%= form_with(model: contender) do |form| %>
+	<% if contender.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(contender.errors.count, "error") %> prohibited this contender from being saved:</h2>
+
+	      <ul>
+	        <% contender.errors.each do |error| %>
+	          <li><%= error.full_message %></li>
+	        <% end %>
+	      </ul>
+	    </div>
+  <% end %>
+
+  <%= form.hidden_field :tournament_id, value: tournament.id %>
+  <div class="field">
+  	<%= form.label :puzzle_id, class: "form-control"%>
+  	<%= form.collection_select :puzzle_id, tournament.available_puzzle_contenders, :id, :title, {}, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+  	<%= form.submit class: "btn btn-primary btn-block mt-2" %>
+  </div>
+<% end %>
