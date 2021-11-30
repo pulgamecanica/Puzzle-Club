@@ -70,11 +70,24 @@ body {min-height: 100vh;}
 		font-size: 120%;
 	}
 }
+.date-field {
+	color: transparent;
+	select {
+		border: 2px solid $light_gray;
+		border-radius: 0.5rem !important;
+	}
+}
 .vote-icon {
 	color: pink;
 	margin-left: 0.2rem;
 	font-size: 120%;
 	vertical-align: top;
+}
+.trash-icon {
+	vertical-align: sub;
+	&:hover {
+		opacity: 0.8;
+	}
 }
 .admin-jumbotron {
 	min-height: 100vh;	

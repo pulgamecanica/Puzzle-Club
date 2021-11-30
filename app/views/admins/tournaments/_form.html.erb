@@ -11,22 +11,40 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :start_date %>
-    <%= form.datetime_select :start_date %>
+  <div class="input-group form-field date-field">
+    <div class="field-tag">
+      <div class="input-group-prepend" >
+        <span class="input-group-text tag-style">
+          <%= form.label :start_date %>
+        </span>
+      </div>
+    </div>
+    <%= form.datetime_select :start_date, class: "form-control" %>
   </div>
 
-  <div class="field">
-    <%= form.label :end_date %>
-    <%= form.datetime_select :end_date %>
+  <div class="input-group form-field date-field">
+    <div class="field-tag">
+      <div class="input-group-prepend" >
+        <span class="input-group-text tag-style">
+          <%= form.label :end_date %>
+        </span>
+      </div>
+    </div>
+    <%= form.datetime_select :end_date, class: "date-form" %>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="input-group form-field">
+    <div class="field-tag">
+      <div class="input-group-prepend" >
+        <span class="input-group-text tag-style">
+          <%= form.label :title %>
+        </span>
+      </div>
+    </div>
+    <%= form.text_field :title, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions text-center">
+    <%= form.submit class: 'btn btn-primary' %>
   </div>
 <% end %>
