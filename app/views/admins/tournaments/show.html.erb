@@ -1,19 +1,43 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Start date:</strong>
-  <%= @tournament.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @tournament.end_date %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @tournament.title %>
-</p>
-
-<%= link_to 'Edit', edit_tournament_path(@tournament) %> |
-<%= link_to 'Back', tournaments_path %>
+<div class="jumbotron bg-light p-2 admin-jumbotron">
+  <h1 class="display-4 text-center m-0  "><%= @tournament.title %></h1>
+  <h6 class="text-center m-0"><span class="badge badge-pill bg-secondary badge-secondary"><%= @tournament.start_date.strftime("%d/%m/%Y") %> - <%= @tournament.end_date.strftime("%d/%m/%Y") %></span></h6>
+  <p class="lead">
+    Total contenders: <%= @tournament.puzzle_contenders.count %>
+    <br>
+    Total Votes: <%= @total_votes %>
+    <br>
+    <div class="text-center container lead">
+      <% if !@tournament.current_winner.nil? && @tournament.current_winner.any? %>
+        Leaderboard <span class="badge badge-pill badge-success bg-success mb-2"><%= @tournament.current_winner.first.second.count %><span class="winner-badge material-icons">military_tech</span></span>
+        <ul class="list-group">
+          <li class="list-group-item d-flex justify-content-around align-items-center"><h5 class="m-0">CONTENDERS</h4><h4 class="m-0">VOTES</h5></li>
+          <% @tournament.current_winner.each do |element| %>
+          <li class="list-group-item d-flex justify-content-around align-items-center">
+            <span>
+              <% element.second.each do |contender| %>
+                <%= link_to contender.second.puzzle, class: "text-decoration-none" do %>
+                  <p><%= contender.second.puzzle.title %></p>
+                <% end %>
+                <% unless contender.eql?(element.second.last) %>
+                  <hr>
+                <% end %>
+              <% end %>
+            </span>
+            <span class="badge badge-primary badge-pill bg-primary"><%= element.first %></span>
+          </li>
+          <% end %>
+        </ul>
+      <% else %>
+        No contenders or votes so far
+      <% end %>
+    </div>
+  </p>
+  <hr class="my-4">
+  <p class="lead text-center p-2 m-2">
+    <%= link_to 'New Contender', edit_tournament_path(@tournament), class: "btn btn-primary btn-lg" %>
+    <%= link_to 'Edit', edit_tournament_path(@tournament), class: "btn btn-primary btn-lg" %>
+  </p>
+  <p class="lead text-center p-2 m-2">
+    <%= link_to 'Destroy', @tournament, method: :delete, class: "btn btn-danger btn-lg" %>
+  </p>
+</div>

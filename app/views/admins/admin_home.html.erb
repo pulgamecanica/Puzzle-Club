@@ -1,11 +1,9 @@
-<div class="container">
-	<div class="jumbotron">
-	  <h1 class="display-4">Hello, <%= current_admin.email.split('@').first %>!</h1>
-	  <p class="lead">You have [0] notifications.</p>
-	  <hr class="my-4">
-	  <p>Total Puzzles: <%= @puzzles.count %></p>
-	  <p class="lead">
-	    <a class="btn btn-primary btn-lg" href="#" role="button">Website</a>
-	  </p>
-	</div>
+<div class="jumbotron bg-light p-2 admin-jumbotron">
+  <h1 class="display-4">Hello, <%= current_admin.email.split('@').first %>!</h1>
+  <p class="lead">You have [0] notifications.</p>
+  <hr class="my-4">
+  <p>Total Puzzles: <%= @puzzles.count %></p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="#" role="button">Website</a>
+  </p>
 </div>

@@ -1,31 +1,49 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Tournaments</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Start date</th>
-      <th>End date</th>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tournaments.each do |tournament| %>
-      <tr>
-        <td><%= tournament.start_date %></td>
-        <td><%= tournament.end_date %></td>
-        <td><%= tournament.title %></td>
-        <td><%= link_to 'Show', tournament %></td>
-        <td><%= link_to 'Edit', edit_tournament_path(tournament) %></td>
-        <td><%= link_to 'Destroy', tournament, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<p class="text-end"><%= link_to 'New Tournament', new_tournament_path, class: 'btn btn-primary m-3' %></p>
+<div class="container">
+  <% @tournaments.each do |tournament| %>
+    <div class="post-card">
+      <p class="spy-eye text-end">
+        <%= link_to tournament, class: 'btn btn-primary m-3' do %>
+          <span class="material-icons">add_box</span>
+        <% end %>
+        <%= link_to edit_tournament_path(tournament), class: 'btn btn-primary m-3' do %>
+          <span class="material-icons">edit</span>
+        <% end %>
+        <%= link_to tournament, method: :delete, data: {confirm: "Do you really want to delete #{tournament.title} tournament?"}, class: 'btn btn-danger m-3' do %>
+          <span class="material-icons">delete</span>
+        <% end %>
+      </p>
+      <%= link_to tournament_path(tournament), class: 'text-decoration-none' do %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-4 tournament-box">
+                <p class="card-text lead"><%= tournament.title %></p>
+                <br>
+                <span class="badge badge-pill bg-secondary badge-secondary"><%= tournament.start_date.strftime("%d/%m/%Y") %> - <%= tournament.end_date.strftime("%d/%m/%Y") %></span>
+              </div>
+              <div class="col-md-8">
+                <p class="card-text text-center text-dark">Contenders</p>
+                <div class="d-flex flex-wrap justify-content-center">
+                  <% tournament.puzzle_contenders.each do |contender| %>
+                    <% if contender.puzzle.image.present? %>
+                      <div class="tournament_puzzle_image" style="background-image: url(<%= url_for(contender.puzzle.image) %>);"><p class="vote-count lead"><span class="badge badge-pill text-secondary bg-light"><%= contender.votes.count %><span class="material-icons vote-icon">favorite</span></span></p></div>
+                    <% else %>
+                      <div class="card lead bg-dark text-light tournament_puzzle_image text-center">
+                        <%= contender.puzzle.title %>
+                        <div class="m-auto">
+                          <p class="badge badge-pill text-secondary bg-light"><%= contender.votes.count %><span class="material-icons vote-icon">favorite</span>
+                          </p>
+                      </div>
+                      </div>
+                    <% end %>
+                  <% end %>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Tournament', new_tournament_path %>
+  <% end %>
+</div>

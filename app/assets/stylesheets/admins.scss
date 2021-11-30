@@ -56,6 +56,42 @@ body {min-height: 100vh;}
 	}
 }
 
+.tournament-box {
+	border-right: 1px solid $light_gray;
+}
+.tournament_puzzle_image {
+	margin: 1.25%;
+	width: 22.5%;
+	min-width: 160px;
+	height: 120px;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	text-align: center;
+	.vote-count {
+		position: absolute;
+		width: 100%;
+		margin: auto;
+		padding: 0.5rem;
+		bottom: 0;
+		font-size: 120%;
+	}
+}
+.vote-icon {
+	color: pink;
+	margin-left: 0.2rem;
+	font-size: 120%;
+	vertical-align: top;
+}
+
+.admin-jumbotron {
+	min-height: 100vh;	
+	.winner-badge {
+		vertical-align: bottom;
+		font-size: inherit;	
+	}
+}
+
 @keyframes notice {
 	from {
 		opacity: 100%;

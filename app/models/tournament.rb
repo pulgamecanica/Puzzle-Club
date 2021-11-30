@@ -1,3 +1,7 @@
 class Tournament < ApplicationRecord
 	has_many :puzzle_contenders, dependent: :destroy
+
+	def current_winner
+      self.puzzle_contenders.map { |contender| [contender.votes.count, contender]}.group_by { |element| element [0] }.max(3)
+    end
 end
