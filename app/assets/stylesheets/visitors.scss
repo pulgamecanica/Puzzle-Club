@@ -4,7 +4,6 @@ $pink: #FFC0CB;
 $purple: #6B4E71;
 $black: #141414;
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 * {
 	 box-sizing: border-box;
 	 padding: 0;
@@ -23,6 +22,7 @@ body {
 	color: $gray;
 }
 .puzzle-piece-container {
+	overflow: hidden;
 	height: 100vh;
 	width: 100vw;
 	display: grid;
@@ -31,17 +31,20 @@ body {
 	.puzzle-piece-element {
 		position: relative;
 		display: flex;
-		&:hover {
-			border: 5px solid;
+		&:hover > div {
+			border: 2px solid;
 			border-color: rgba(255, 255, 255, 0.5);
 			color: $black;
 		}
-		div {
+		> div {
 			width: 100%;
 			height: 100%;
-			text-align: center;
+			text-align: left;
 			padding: 0.5rem;
-			border: 5px solid $black;
+			border: 2px solid $black;
+			h1, h5, p, li{
+				text-align: center;
+			}
 			&:hover {
 				cursor: pointer;
 			}
@@ -55,7 +58,7 @@ body {
 	}
 	#puzzle-piece-2 {
 		background-color: $purple;
-		&:hover {
+		&:hover h1, li{
 			color: white;
 		}
 		&:hover .tournament-list {
@@ -72,12 +75,112 @@ body {
 	}
 	#puzzle-piece-3 {
 		background-color: $blue;
+		h1 {
+			a {
+				color: $black;
+				text-decoration: none;
+			}
+		}
+		.shelve-container {
+			display: none;
+			position: relative;
+			width: 100%;
+			top: 0;
+			left: 0;
+			.shelve-item {
+				transform: perspective(50em) rotateX(50deg);
+				opacity: 0.85;
+				height: 120px;
+				width: auto;
+				border-radius: 1rem;
+				display: grid;
+				place-items: center;
+				position: absolute;
+				top: 30px;
+				left: 0;
+				img {
+					height: 120px;
+					width: auto;
+					border-radius: 1rem;
+				}
+				> p {
+					background-color: rgb(230, 230, 230);
+					width: 100%;
+					height:  100%;
+					padding: 1rem;
+					border:  2px solid $black;
+					border-radius: 1rem;
+					color: $black;
+				}
+				&:nth-child(1) {
+					left: 1vw;
+				}
+				&:nth-child(2) {
+					left: 9.5vw;
+				}
+				&:nth-child(3) {
+					left: 16vw;
+				}
+				&:nth-child(4) {
+					left: 24.5vw; 
+				}
+				&:nth-child(5) {
+					left: 32vw;		
+				}
+				&:hover {
+					z-index: 9;
+				  animation: image_show 2s linear 1;
+		  		box-shadow: 5px 10px 8px #888888;
+					top: -10px;
+					transform: perspective(0) rotateX(0);
+				}
+			}
+		}
+		&:hover .shelve-container {
+			display: block;
+		}
 	}
 	#puzzle-piece-4 {
 		background-color: $black;
-		&:hover {
+		&:hover h1 {
 			color: white;
 		}
+		&:hover .club-info-title {
+			display: block;
+			color: white;
+			animation: glitch_delay 3s linear 1;
+		}
+		p {
+			border-bottom: 1.5px solid white;
+			padding-bottom: 5px;
+			max-width: 90%;
+			margin: auto;
+		}
+		h5 {
+			margin-top: 0.5rem;
+			color: white;
+		}
+		&:hover .club-info-description {
+			display: block;
+			animation: glitch_delay_2 4s linear 1;
+		}
+		.club-info-title, .club-info-description{
+			display: none;
+			li {
+				display: block;
+				margin-top: 0.5rem;
+			}
+		}
+	}
+}
+@keyframes image_show {
+	from {
+		transform: perspective(50em) rotateX(0.1deg);
+		top: 30px;
+	}
+	to {
+		transform: perspective(0) rotateX(0deg);
+		top: -10px;
 	}
 }
 @keyframes glitch{
@@ -87,35 +190,28 @@ body {
   4%,60%{
     transform: translate(-4px,0) skew(0deg);
   }
-  62%{
+  62%, 68%{
     transform: translate(0,0) skew(5deg);
   }
   65%{
     transform: translate(0, 10px) skew(5deg);
   }
-  68%{
-    transform: translate(0,0) skew(5deg); 
-  }
-  70%{
+  70%, 80%, 90% {
     opacity: 1;
   }
-  75%{
+  75%, 85%, 100% {
     opacity: 0;
-  }
-  80%{
-    opacity: 1;
-  }
-  85%{
-    opacity: 0;
-  }
-  90%{
-    opacity: 1;
-  }
-  100%{
-  	opacity: 0;
   }
 }
-@keyframes glitch_delay{
+@keyframes glitch_delay_2 {
+	0%, 50% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes glitch_delay {
   0% {
   	opacity: 0;
   }
@@ -146,6 +242,17 @@ body {
  		grid-template-areas: 
  			"piece-1 piece-2"
  			"piece-3 piece-4";
+		#puzzle-piece-3 {
+			.shelve-container {
+				.shelve-item {
+		 			img, p{
+						height: 30vh;
+						width: 15vw;
+						border-radius: 1rem;
+					}
+				}
+			}
+ 		}	
  	}
  	#puzzle-piece-1 {
  		grid-area: piece-1;

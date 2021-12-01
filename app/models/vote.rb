@@ -19,7 +19,6 @@ class Vote < ApplicationRecord
         puts "Puzzle: " + self.puzzle_contender.puzzle.title +  " | Last Votes Count: " + self.puzzle_contender.votes.count.to_s
       rescue
         puts "something went wrong when check if #{user} exists..."
-        puts response
         errors.add(:username, "Not a valid username __REASON_TODO__")
       end
       puts ">>>" * 10 + "-*-" * 20 + "<<<" * 10

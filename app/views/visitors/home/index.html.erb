@@ -7,11 +7,10 @@
 		<div>
 			<h1>TOURNAMENTS</h1>
 			<ul class="tournament-list">
-				<li><%= @tournaments.select { |tournament| tournament.active }.count %> tournament</li>
+				<li><%= @tournaments.select { |tournament| tournament.active }.count %> tournaments</li>
 				<% if @tournaments.select { |tournament| tournament.active }.any? %>
 					<li><%= @tournaments.select { |tournament| tournament.active }.map { |active_tournament| active_tournament.puzzle_contenders.count }.sum %> contenders</li>
 					<li><%= @tournaments.select { |tournament| tournament.active }.map { |active_tournament| active_tournament.votes.count }.sum %> votes</li>
-
 				<% else %>
 					<li>No contenders :(</li>
 					<li>No votes :(</li>
@@ -21,10 +20,39 @@
 	</div>
 	
 	<div class="puzzle-piece-element" id="puzzle-piece-3">
-		<div><h1>PUZZLE SHELVE</h1></div>
+		<div>
+			<h1><%= link_to "PUZZLE SHELVE", visitors_puzzles_path %></h1>
+			<span class="shelve-container">
+				<% @puzzle_shelve.each do |puzzle| %>
+					<%= link_to visitors_puzzle_path(puzzle), class: "shelve-item" do %>
+						<% if puzzle.image.present? %>
+							<%= image_tag puzzle.image %>
+						<% else %>
+							<p><%= puzzle.title %></p>
+						<% end %>
+					<% end %>
+				<% end %>
+			</span>
+		</div>
 	</div>
 	
 	<div class="puzzle-piece-element" id="puzzle-piece-4">
-		<div><h1>PUZZLECLUB42</h1></div>
+		<div>
+			<h1>PUZZLECLUB42</h1>
+			<div>
+				<p class="club-info-title" >Lisbon42 Puzzle club oficial website.</p>
+				<h5 class="club-info-description">
+					This club is for anyone who enjoys puzzles.
+					<br>
+					<br>
+					This Club host two activities:
+					<ul>
+						<li><%= link_to "Jigasaw Puzzles", visitors_puzzles_path %></li>
+						<li><%= link_to "Lego Building", visitors_puzzles_path %></li>
+						
+					</ul>
+				</h5>
+			</div>
+		</div>
 	</div>
 </div>
