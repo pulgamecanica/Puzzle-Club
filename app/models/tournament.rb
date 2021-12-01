@@ -1,6 +1,7 @@
 class Tournament < ApplicationRecord
 	has_many :puzzle_contenders, dependent: :destroy
 	has_many :puzzles, through: :puzzle_contenders
+	has_many :votes, through: :puzzle_contenders
 	
 	def available_puzzle_contenders
 		Puzzle.where.not(id: self.puzzles)

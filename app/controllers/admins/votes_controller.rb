@@ -6,10 +6,10 @@ module Admins
 		def create
 			@vote = @contender.votes.build
 			@vote.update(username: vote_params["username"])
-			if @vote.save
-				redirect_to tournament_path(@vote.puzzle_contender.tournament_id), notice: "Contender succesfully added to Tournament!" 
+			if not @vote.errors.any?
+				redirect_to tournament_path(@vote.puzzle_contender.tournament_id), notice: "Vote succesfully added to Tournament!" 
 			else
-				redirect_to tournament_path(PuzzleContender.find(params["puzzle_contender_id"]).tournament_id), notice: "Sorry the element couldn't be added to the Tournament :("
+				redirect_to tournament_path(PuzzleContender.find(params["puzzle_contender_id"]).tournament_id), notice: "Invalid Vote :("
 			end
 		end
 
