@@ -1,27 +1,38 @@
 <div class="puzzle-piece-container">
 	<div class="puzzle-piece-element" id="puzzle-piece-1">
-		<div><h1>PUZZLE</h1></div>
-	</div>
-	
-	<div class="puzzle-piece-element" id="puzzle-piece-2">
-		<div>
-			<h1>TOURNAMENTS</h1>
-			<ul class="tournament-list">
-				<li><%= @tournaments.select { |tournament| tournament.active }.count %> tournaments</li>
-				<% if @tournaments.select { |tournament| tournament.active }.any? %>
-					<li><%= @tournaments.select { |tournament| tournament.active }.map { |active_tournament| active_tournament.puzzle_contenders.count }.sum %> contenders</li>
-					<li><%= @tournaments.select { |tournament| tournament.active }.map { |active_tournament| active_tournament.votes.count }.sum %> votes</li>
-				<% else %>
-					<li>No contenders :(</li>
-					<li>No votes :(</li>
-				<% end %>
-			</ul>
+		<div class="piece-section ">
+			<h1>PUZZLE</h1>
+			<div class="home-page-icon">
+				<span class="material-icons">extension</span>
+			</div>
 		</div>
 	</div>
 	
+	<div class="puzzle-piece-element" id="puzzle-piece-2">
+		<%= link_to visitor_torunaments_path, class: "disable-link" do %>
+			<div class="piece-section ">
+				<h1>TOURNAMENTS</h1>
+				<ul class="tournament-list">
+					<li><%= @tournaments.select { |tournament| tournament.active }.count %> tournaments</li>
+					<% if @tournaments.select { |tournament| tournament.active }.any? %>
+						<li><%= @tournaments.select { |tournament| tournament.active }.map { |active_tournament| active_tournament.puzzle_contenders.count }.sum %> contenders</li>
+						<li><%= @tournaments.select { |tournament| tournament.active }.map { |active_tournament| active_tournament.votes.count }.sum %> votes</li>
+					<% else %>
+						<li>No contenders :(</li>
+						<li>No votes :(</li>
+					<% end %>
+				</ul>
+
+				<div class="home-page-icon">
+					<span class="material-icons">emoji_events</span>
+				</div>
+			</div>
+		<% end %>
+	</div>
+	
 	<div class="puzzle-piece-element" id="puzzle-piece-3">
-		<div>
-			<h1><%= link_to "PUZZLE SHELVE", visitors_puzzles_path %></h1>
+		<div class="puzzle-shelve-container piece-section ">
+			<h1><%= link_to "PUZZLE SHELVE", visitors_puzzles_path, class: "disable-link" %></h1>
 			<span class="shelve-container">
 				<% @puzzle_shelve.each do |puzzle| %>
 					<%= link_to visitors_puzzle_path(puzzle), class: "shelve-item" do %>
@@ -33,12 +44,15 @@
 					<% end %>
 				<% end %>
 			</span>
+			<div class="home-page-icon">
+				<span class="material-icons">reorder</span>
+			</div>
 		</div>
 	</div>
 	
 	<div class="puzzle-piece-element" id="puzzle-piece-4">
-		<div>
-			<h1>PUZZLECLUB42</h1>
+		<div class="piece-section ">
+			<h1>PUZZLECLUB<span class="text-purple">42</span></h1>
 			<div>
 				<p class="club-info-title" >Lisbon42 Puzzle club oficial website.</p>
 				<h5 class="club-info-description">
@@ -51,7 +65,14 @@
 						<li><%= link_to "Lego Building", visitors_puzzles_path %></li>
 						
 					</ul>
+					<div class="club-info-buttons">
+						<%= link_to "Tournament", visitor_torunaments_path %>
+						<a href="">CurrentPuzzle</a>
+					</div>
 				</h5>
+			</div>
+			<div class="home-page-icon">
+				<span class="icon-42">42</span>
 			</div>
 		</div>
 	</div>

@@ -1,9 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import 'visitors_animations';
 $gray: #696969;
 $blue: #D5F4CD;
 $pink: #FFC0CB;
 $purple: #6B4E71;
 $black: #141414;
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 * {
 	 box-sizing: border-box;
 	 padding: 0;
@@ -21,13 +22,17 @@ body {
 	font-family: 'Press Start 2P', cursive;
 	color: $gray;
 }
+.disable-link {
+	width: 100%;
+	color: $gray;
+	text-decoration: none;
+}
+.text-purple {
+	color: $purple;
+}
 .puzzle-piece-container {
 	overflow: hidden;
-	height: 100vh;
 	width: 100vw;
-	display: grid;
-	column-gap: 0;
-	row-gap: 0;
 	.puzzle-piece-element {
 		position: relative;
 		display: flex;
@@ -36,13 +41,15 @@ body {
 			border-color: rgba(255, 255, 255, 0.5);
 			color: $black;
 		}
-		> div {
+		&:hover .home-page-icon {
+			display: none;
+		}
+		.piece-section {
 			width: 100%;
 			height: 100%;
-			text-align: left;
-			padding: 0.5rem;
 			border: 2px solid $black;
 			h1, h5, p, li{
+				margin-top: 5px;
 				text-align: center;
 			}
 			&:hover {
@@ -54,17 +61,11 @@ body {
 		}
 	}
 	#puzzle-piece-1 {
-		background-color: $pink;
+		&:hover .material-icons {
+			display: none !important;
+		}
 	}
 	#puzzle-piece-2 {
-		background-color: $purple;
-		&:hover h1, li{
-			color: white;
-		}
-		&:hover .tournament-list {
-			display: block;
-			animation: glitch_delay 3s linear 1;
-		}
 		.tournament-list {
 			display: none;
 			li {
@@ -72,9 +73,15 @@ body {
 				margin-top: 0.5rem;
 			}
 		}
+		&:hover h1, li{
+			color: white;
+		}
+		&:hover .tournament-list {
+			display: block;
+			animation: glitch_delay 3s linear 1;
+		}
 	}
 	#puzzle-piece-3 {
-		background-color: $blue;
 		h1 {
 			a {
 				color: $black;
@@ -89,7 +96,8 @@ body {
 			left: 0;
 			.shelve-item {
 				transform: perspective(50em) rotateX(50deg);
-				opacity: 0.85;
+				text-decoration: none;
+				opacity: 0.95;
 				height: 120px;
 				width: auto;
 				border-radius: 1rem;
@@ -112,26 +120,16 @@ body {
 					border-radius: 1rem;
 					color: $black;
 				}
-				&:nth-child(1) {
-					left: 1vw;
-				}
-				&:nth-child(2) {
-					left: 9.5vw;
-				}
-				&:nth-child(3) {
-					left: 16vw;
-				}
-				&:nth-child(4) {
-					left: 24.5vw; 
-				}
-				&:nth-child(5) {
-					left: 32vw;		
-				}
+				&:nth-child(1) {left: 1vw;}
+				&:nth-child(2) {left: 9.5vw;}
+				&:nth-child(3) {left: 16vw;}
+				&:nth-child(4) {left: 24.5vw; }
+				&:nth-child(5) {left: 32vw;}
 				&:hover {
-					z-index: 9;
-				  animation: image_show 2s linear 1;
-		  		box-shadow: 5px 10px 8px #888888;
 					top: -10px;
+					z-index: 9;
+		  		box-shadow: 5px 10px 8px #888888;
+				  animation: image_show 2s linear 1;
 					transform: perspective(0) rotateX(0);
 				}
 			}
@@ -141,15 +139,6 @@ body {
 		}
 	}
 	#puzzle-piece-4 {
-		background-color: $black;
-		&:hover h1 {
-			color: white;
-		}
-		&:hover .club-info-title {
-			display: block;
-			color: white;
-			animation: glitch_delay 3s linear 1;
-		}
 		p {
 			border-bottom: 1.5px solid white;
 			padding-bottom: 5px;
@@ -160,9 +149,8 @@ body {
 			margin-top: 0.5rem;
 			color: white;
 		}
-		&:hover .club-info-description {
-			display: block;
-			animation: glitch_delay_2 4s linear 1;
+		.club-info-buttons {
+			display: none;
 		}
 		.club-info-title, .club-info-description{
 			display: none;
@@ -171,78 +159,99 @@ body {
 				margin-top: 0.5rem;
 			}
 		}
+		&:hover h1 {
+			color: white;
+		}
+		&:hover .club-info-description {
+			display: block;
+			animation: glitch_delay_2 4s linear 1;
+		}
+		&:hover .club-info-title {
+			display: block;
+			color: white;
+			animation: glitch_delay 3s linear 1;
+		}
 	}
 }
-@keyframes image_show {
-	from {
-		transform: perspective(50em) rotateX(0.1deg);
-		top: 30px;
-	}
-	to {
-		transform: perspective(0) rotateX(0deg);
-		top: -10px;
-	}
-}
-@keyframes glitch{
-  2%,64%{
-    transform: translate(4px,0) skew(0deg);
-  }
-  4%,60%{
-    transform: translate(-4px,0) skew(0deg);
-  }
-  62%, 68%{
-    transform: translate(0,0) skew(5deg);
-  }
-  65%{
-    transform: translate(0, 10px) skew(5deg);
-  }
-  70%, 80%, 90% {
-    opacity: 1;
-  }
-  75%, 85%, 100% {
-    opacity: 0;
-  }
-}
-@keyframes glitch_delay_2 {
-	0%, 50% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 1;
+.home-page-icon {
+	text-align: center;
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+	display: flex;
+	position: relative;
+	top: 0;
+	left: 0;
+	justify-content: center;
+	.material-icons, .icon-42 {
+		margin: 0;
+		padding: 0;
+		position: absolute;
+		bottom: -150%;
+		font-size: 1000%;
 	}
 }
-@keyframes glitch_delay {
-  0% {
-  	opacity: 0;
-  }
-  50% {
-  	opacity: 0;
-    transform: translate(2px,0) skew(0deg);
-  }
- 	51% {
- 		opacity: 1;
- 	}
-  80%{
-    opacity: 1;
-  }
-  85%{
-    opacity: 0;
-  }
-  90%{
-    opacity: 1;
-  }
-  100%{
-  	opacity: 0;
-  }
-}
-@media only screen and (min-width: 700px) {
+@media only screen and (max-width: 700px) {
 	.puzzle-piece-container {
+		display: grid;
+		align-items: center;
+		margin: auto;
+		height: 100%;
+		width: 100%;
+ 		#puzzle-piece-1 {
+ 			display: none;
+		}
+ 		#puzzle-piece-2 {
+ 			display: none;
+ 		}
+ 		#puzzle-piece-3 {
+ 			display: none;
+ 		}
+ 		#puzzle-piece-4 {
+ 			position: realtive;
+ 			> div {
+ 				margin: auto 0;
+ 			}
+ 			.club-info-buttons {
+ 				position: absolute;
+ 				display: inline-block;
+ 				bottom: 0.8rem;
+ 				width: 100%;
+ 				a {
+ 					padding: 0.5rem;
+ 					background: white;
+ 					border-radius: 0.5rem;
+ 					text-decoration: none;
+ 				}
+ 			}
+ 			&:hover .club-info-buttons {
+ 				display: block;
+ 			}
+		}
+	}
+}
+@media only screen and (min-width: 701px) {
+	.puzzle-piece-container {
+		height: 100vh;
+		column-gap: 0;
+		row-gap: 0;
+		display: grid;
  		grid-template-columns: 50% 50%;
  		grid-template-rows: 50% 50%;
  		grid-template-areas: 
  			"piece-1 piece-2"
  			"piece-3 piece-4";
+ 		#puzzle-piece-1 {
+			background-color: $pink;
+ 			grid-area: piece-1;
+	 	}
+	 	#puzzle-piece-2 {
+			background-color: $purple;
+	 		grid-area: piece-2;
+	 	}
 		#puzzle-piece-3 {
+			background-color: $blue;
+	 		grid-area: piece-3;
 			.shelve-container {
 				.shelve-item {
 		 			img, p{
@@ -252,18 +261,18 @@ body {
 					}
 				}
 			}
- 		}	
- 	}
- 	#puzzle-piece-1 {
- 		grid-area: piece-1;
- 	}
- 	#puzzle-piece-2 {
- 		grid-area: piece-2;
- 	}
- 	#puzzle-piece-3 {
- 		grid-area: piece-3;
- 	}
- 	#puzzle-piece-4 {
- 		grid-area: piece-4;
- 	}
+ 		}
+ 		#puzzle-piece-4 {
+			background-color: $black;
+	 		grid-area: piece-4;
+	 	}	
+ 	} 	
+}
+@media only screen and (max-width: 699px) {
+	.puzzle-piece-container {
+		height: 100vh;
+		.puzzle-piece-element {
+			height: 50vh;
+		}
+	}
 }
