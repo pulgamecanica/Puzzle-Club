@@ -1,6 +1,7 @@
 <p class="text-end"><%= link_to 'New Tournament', new_tournament_path, class: 'btn btn-primary m-3' %></p>
 <div class="container">
-  <% @tournaments.each do |tournament| %>
+  <% @tournaments.map {|x| [x.active ? 0 : 1, x ]}.sort.map { |x| x.second }
+.each do |tournament| %>
     <div class="post-card">
       <p class="spy-eye text-end">
         <%= link_to tournament, class: 'btn btn-primary m-3' do %>
@@ -19,6 +20,11 @@
             <div class="row">
               <div class="col-md-4 tournament-box">
                 <p class="card-text lead"><%= tournament.title %></p>
+                <% if tournament.active %>
+                  <p class="badge badge-pill badge-success bg-success">Active</p>
+                <% else %>
+                  <p class="badge badge-pill badge-success bg-danger">Unactive</p>
+                <% end %>
                 <br>
                 <span class="badge badge-pill bg-secondary badge-secondary"><%= tournament.start_date.strftime("%d/%m/%Y") %> - <%= tournament.end_date.strftime("%d/%m/%Y") %></span>
               </div>

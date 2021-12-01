@@ -1,7 +1,7 @@
 class Vote < ApplicationRecord
   belongs_to :puzzle_contender
   validates_presence_of :username
-  validate :valid_user_42api, :duplicated_vote
+  validate :valid_user_42api, :duplicated_vote, :active_tournament
 
   private
 
@@ -22,12 +22,18 @@ class Vote < ApplicationRecord
         puts response
         errors.add(:username, "Not a valid username __REASON_TODO__")
       end
-      puts ">>>" * 10 + "---" * 20 + "<<<" * 10
+      puts ">>>" * 10 + "-*-" * 20 + "<<<" * 10
     end
 
     def duplicated_vote
       if self.puzzle_contender.tournament.votes.where(username: username).any?
           errors.add(:username, "That username has been used once already :( ")
+      end
+    end
+
+    def active_tournament
+      if not self.puzzle_contender.tournament.active
+        errors.add(:puzzle_contender, "The Tournament is not active atm :( ")
       end
     end
 end

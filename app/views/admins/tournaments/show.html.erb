@@ -20,10 +20,15 @@
                     <%= link_to contender.second, method: :delete, class: "text-decoration-none" do %>
                       <span class="material-icons trash-icon text-danger text">delete</span>
                     <% end %>
-                    <%= link_to contender.second.puzzle, class: "text-decoration-none" do %>
+                    <%= link_to contender.second.puzzle, class: "text-decoration-none users-tooltip" do %>
                       <%= contender.second.puzzle.title %>
+                      <% if contender.second.votes.any? %>
+                        <span class="tooltiptext p-2 bg-dark text-light"><%= contender.second.votes.map { |vote| vote.username }.join(", ") %></span>
+                      <% else %>
+                        <span class="tooltiptext p-2 bg-dark text-light">No votes :(</span>
+                      <% end %>
                     <% end %>
-                    <%= render "vote_contender_form", vote: @vote, contender: contender.second %>
+                    <!--<= render "vote_contender_form", vote: @vote, contender: contender.second >-->
                   </div>
                   <% unless contender.eql?(element.second.last) %>
                     <hr>

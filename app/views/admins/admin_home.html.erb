@@ -2,7 +2,9 @@
   <h1 class="display-4">Hello, <%= current_admin.email.split('@').first %>!</h1>
   <p class="lead">You have [<%= link_to @total_notifications.to_s, notifications_path %>] notifications.</p>
   <hr class="my-4">
-  <p>Total Puzzles: <%= @puzzles.count %></p>
+  <p class="lead">Total Puzzles: <%= @puzzles.count %></p>
+  <p class="lead">Active Torunaments: <%= @tournaments.select { |tournament| tournament.active }.count %></p>
+  <p class="lead">Total Torunaments: <%= @tournaments.count %></p>
   <p class="lead">
     <a class="btn btn-primary btn-lg" href="#" role="button">Website</a>
   </p>

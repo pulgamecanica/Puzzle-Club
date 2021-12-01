@@ -5,6 +5,7 @@ class AdminsController < ApplicationController
 	def admin_home
 		@puzzles = Puzzle.all
 		@total_notifications = ImageMemory.where(active: false).count + TextMemory.where(active: false).count
+		@tournaments = Tournament.all
 	end
 
 	def notifications

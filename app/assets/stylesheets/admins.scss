@@ -1,7 +1,7 @@
 $blue: #0275d8;
 $light_gray: rgba(210, 210, 210, 0.6);
 $dark_gray: rgba(200, 200, 200, 1);
-
+$black: #292b2c;
 * {
 	 box-sizing: border-box;
 	 padding: 0;
@@ -61,6 +61,7 @@ body {min-height: 100vh;}
 	background-position: center;
 	position: relative;
 	text-align: center;
+	border-radius: 0.5rem;
 	.vote-count {
 		position: absolute;
 		width: 100%;
@@ -102,6 +103,35 @@ body {min-height: 100vh;}
 	.winner-badge {
 		vertical-align: bottom;
 		font-size: inherit;	
+	}
+}
+.users-tooltip {
+  position: relative;
+  display: inline-block;
+	.tooltiptext {
+		font-size: 75%;
+	  visibility: hidden;
+	  text-align: center;
+	  border-radius: 6px;
+	  padding: 5px 0;
+	  position: absolute;
+	  z-index: 1;
+	  bottom: 150%;
+	  left: 50%;
+	  margin-left: -60px;
+		&:after {
+			content: "";
+		  position: absolute;
+		  top: 100%;
+		  left: 50%;
+		  margin-left: -5px;
+		  border-width: 5px;
+		  border-style: solid;
+		  border-color: $black transparent transparent transparent;
+		}
+	}
+	&:hover .tooltiptext {
+	  visibility: visible;
 	}
 }
 @keyframes notice {
