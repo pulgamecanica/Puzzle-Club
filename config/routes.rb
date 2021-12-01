@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :admins
-  root to: "home#index"
   scope module: 'admins' do
     get 'admin_home'
     get 'notifications'
@@ -12,5 +11,8 @@ Rails.application.routes.draw do
     resources :puzzle_contenders, only: [:new, :create, :destroy] do
       resources :votes
     end
+  end
+  scope module: 'visitors' do
+    root to: "home#index"
   end
 end

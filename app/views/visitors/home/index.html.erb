@@ -1,0 +1,30 @@
+<div class="puzzle-piece-container">
+	<div class="puzzle-piece-element" id="puzzle-piece-1">
+		<div><h1>PUZZLE</h1></div>
+	</div>
+	
+	<div class="puzzle-piece-element" id="puzzle-piece-2">
+		<div>
+			<h1>TOURNAMENTS</h1>
+			<ul class="tournament-list">
+				<li><%= @tournaments.select { |tournament| tournament.active }.count %> tournament</li>
+				<% if @tournaments.select { |tournament| tournament.active }.any? %>
+					<li><%= @tournaments.select { |tournament| tournament.active }.map { |active_tournament| active_tournament.puzzle_contenders.count }.sum %> contenders</li>
+					<li><%= @tournaments.select { |tournament| tournament.active }.map { |active_tournament| active_tournament.votes.count }.sum %> votes</li>
+
+				<% else %>
+					<li>No contenders :(</li>
+					<li>No votes :(</li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="puzzle-piece-element" id="puzzle-piece-3">
+		<div><h1>PUZZLE SHELVE</h1></div>
+	</div>
+	
+	<div class="puzzle-piece-element" id="puzzle-piece-4">
+		<div><h1>PUZZLECLUB42</h1></div>
+	</div>
+</div>

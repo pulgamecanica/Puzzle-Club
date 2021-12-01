@@ -1,0 +1,162 @@
+$gray: #696969;
+$blue: #D5F4CD;
+$pink: #FFC0CB;
+$purple: #6B4E71;
+$black: #141414;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+	 box-sizing: border-box;
+	 padding: 0;
+	 margin: 0;
+}
+hr {
+	margin: 0.5rem;
+}
+html {height: 100%;}
+body {
+	min-height: 100vh;
+	width: 100vw;
+	background-color: $black;
+	word-wrap: break-word;
+	font-family: 'Press Start 2P', cursive;
+	color: $gray;
+}
+.puzzle-piece-container {
+	height: 100vh;
+	width: 100vw;
+	display: grid;
+	column-gap: 0;
+	row-gap: 0;
+	.puzzle-piece-element {
+		position: relative;
+		display: flex;
+		&:hover {
+			border: 5px solid;
+			border-color: rgba(255, 255, 255, 0.5);
+			color: $black;
+		}
+		div {
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			padding: 0.5rem;
+			border: 5px solid $black;
+			&:hover {
+				cursor: pointer;
+			}
+			&:hover h1 {
+				animation: glitch 1s linear 1;
+			}
+		}
+	}
+	#puzzle-piece-1 {
+		background-color: $pink;
+	}
+	#puzzle-piece-2 {
+		background-color: $purple;
+		&:hover {
+			color: white;
+		}
+		&:hover .tournament-list {
+			display: block;
+			animation: glitch_delay 3s linear 1;
+		}
+		.tournament-list {
+			display: none;
+			li {
+				display: block;
+				margin-top: 0.5rem;
+			}
+		}
+	}
+	#puzzle-piece-3 {
+		background-color: $blue;
+	}
+	#puzzle-piece-4 {
+		background-color: $black;
+		&:hover {
+			color: white;
+		}
+	}
+}
+@keyframes glitch{
+  2%,64%{
+    transform: translate(4px,0) skew(0deg);
+  }
+  4%,60%{
+    transform: translate(-4px,0) skew(0deg);
+  }
+  62%{
+    transform: translate(0,0) skew(5deg);
+  }
+  65%{
+    transform: translate(0, 10px) skew(5deg);
+  }
+  68%{
+    transform: translate(0,0) skew(5deg); 
+  }
+  70%{
+    opacity: 1;
+  }
+  75%{
+    opacity: 0;
+  }
+  80%{
+    opacity: 1;
+  }
+  85%{
+    opacity: 0;
+  }
+  90%{
+    opacity: 1;
+  }
+  100%{
+  	opacity: 0;
+  }
+}
+@keyframes glitch_delay{
+  0% {
+  	opacity: 0;
+  }
+  50% {
+  	opacity: 0;
+    transform: translate(2px,0) skew(0deg);
+  }
+ 	51% {
+ 		opacity: 1;
+ 	}
+  80%{
+    opacity: 1;
+  }
+  85%{
+    opacity: 0;
+  }
+  90%{
+    opacity: 1;
+  }
+  100%{
+  	opacity: 0;
+  }
+}
+@media only screen and (min-width: 700px) {
+	.puzzle-piece-container {
+ 		grid-template-columns: 50% 50%;
+ 		grid-template-rows: 50% 50%;
+ 		grid-template-areas: 
+ 			"piece-1 piece-2"
+ 			"piece-3 piece-4";
+ 	}
+ 	#puzzle-piece-1 {
+ 		grid-area: piece-1;
+ 	}
+ 	#puzzle-piece-2 {
+ 		grid-area: piece-2;
+ 	}
+ 	#puzzle-piece-3 {
+ 		grid-area: piece-3;
+ 	}
+ 	#puzzle-piece-4 {
+ 		grid-area: piece-4;
+ 	}
+}
