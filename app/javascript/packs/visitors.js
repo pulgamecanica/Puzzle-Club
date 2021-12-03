@@ -14,10 +14,25 @@ document.addEventListener("DOMContentLoaded", function(event){
 	}
 	function pagination(id) {
 		let current = document.querySelector(".active");
-		current.className = current.className.replace("active", "");
-		current.style.display = "none";
-		document.querySelector("#slide-" + id).style.display = "block";
-		document.querySelector("#slide-" + id).className += " active";
-		console.log("Tournament id: " + id.toString());
+		let current_id = parseInt(current.dataset.id);
+		let last_id;
+		document.querySelectorAll(".slider-slide").forEach(element => last_id = parseInt(element.dataset.id));
+		if (id === "before_button")	{
+			if (current_id > 0)
+				pagination((current_id - 1).toString());
+		}
+		else if (id === "after_button") {
+			if (current_id < last_id)
+				pagination((current_id + 1).toString());
+		}
+		else
+		{
+			current.className = current.className.replace("active", "");
+			current.style.display = "none";
+			let active = document.querySelector("#slide-" + id);
+			active.style.display = "block";
+			active.className += " active";
+			console.log("Tournament id: " + id.toString());
+		}
 	}
 });

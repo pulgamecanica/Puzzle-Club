@@ -12,9 +12,9 @@
 			<div class="slides-container">
 				<% @tournaments.each_with_index do |tournament, index| %>
 					<% if @tournaments.first.eql?(tournament) %>
-						<div class="slider-slide active" id="slide-<%= index %>">
+						<div class="slider-slide active" id="slide-<%= index %>" data-id="<%= index %>">
 					<% else %>
-						<div class="slider-slide" id="slide-<%= index %>">
+						<div class="slider-slide" id="slide-<%= index %>" data-id="<%= index %>">
 					<% end %>
 						<h4><%= tournament.title %><br><span style="font-size: 50%;">Choose a puzzle</span></h4>
 						<ul>
@@ -39,11 +39,11 @@
 				<% end %>
 				<% if @tournaments.any? %>
 					<div id="pagination">
-						<div href="#" class="disable-link">&laquo;</div>
+						<div data-tournamentid="before_button" class="disable-link">&laquo;</div>
 						<% @tournaments.each_with_index do |tournament, index| %>
 							<div data-tournamentid="<%= index %>" class="disable-link"><%= index %></div>
 						<% end %>
-						<div href="#" class="disable-link">&raquo;</div>
+						<div data-tournamentid="after_button" class="disable-link">&raquo;</div>
 					</div>
 				<% else %>
 					<br>

@@ -62,6 +62,9 @@ $purple: #6B4E71;
 						padding: 0.5rem;
 						border-radius: 0.5rem;
 						cursor: pointer;
+						&:hover {
+							opacity: 0.6;
+						}
 					}
 				}
 				.slider-slide {
