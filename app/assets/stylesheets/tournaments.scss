@@ -1,0 +1,166 @@
+@import 'visitors_animations';
+$gray: #696969;
+$blue: #D5F4CD;
+$pink: #FFC0CB;
+$black: #141414;
+$purple: #6B4E71;
+.tournament-container {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	display: grid;
+	align-items: center;
+	.tournaments-box {
+		width: 80vw;
+		margin: auto;
+		height: 90vh;
+		display: flex;
+		padding: 0.5rem;
+		overflow: hidden;
+		flex-flow: column;
+		border-radius: 0.25rem;
+		border: 2px solid $purple;
+		.num-stat {
+			color: $purple;
+		}
+		> ul {
+			text-align: center;
+			li {
+				color: $black;
+				padding: 0.35rem;
+				display: inline-block;
+				border-radius: 0.5rem;
+				margin-bottom: 0.5rem;
+				background-color: $blue;
+			}
+		}
+		hr {
+			width: 80%;
+			margin: auto;
+			margin-bottom: 10px;
+		}
+		h1, h6, {
+			padding: 5px;
+			text-align: center;
+		}
+		.tournaments-sliders {
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			color: $gray;
+			flex-grow: 1;			
+			text-align: center;
+			background-color: none;
+			.slides-container {
+				border-radius: 0.5rem !important;
+				height: 100% !important;
+				#pagination {
+					div {
+						display: inline;
+						background: $blue;
+						margin: 0.5rem;
+						padding: 0.5rem;
+						border-radius: 0.5rem;
+						cursor: pointer;
+					}
+				}
+				.slider-slide {
+					display: none;
+					transition: ease-out;
+					padding-top: 0.5rem;
+					height: 90% !important;
+					ul {
+						position: relative;
+						display: flex;
+						justify-content: center;
+						flex-wrap: wrap;
+						gap: 5px;
+						margin: auto;
+						width: 100%;
+						padding-top: 1rem;
+	 					list-style-type: none;
+						li {
+							position: relative;
+							bottom: 0;
+							left: 0;
+							display: inline-block;
+							.votes, .votes-no-img {
+								position: absolute;
+								z-index: 10;
+								color: white;
+								opacity: 0.75;
+								border-radius: 0.5rem;
+								bottom: 10px;
+								left: 60px;
+								padding: 5px;
+								background-color: $gray;
+							}
+							img {
+								opacity: 0.75;
+								width: auto;
+								height: 100px;
+								width: 150px;
+								border-radius: 1rem;
+								&:hover {
+									transform: scale(103%);
+									border: 2px solid $purple;
+									background-color: rgba(0, 0 ,0, 0.5);
+									opacity: 0.75;
+								}
+							}
+							.contender-no-img {
+								color: $gray;
+								width: 150px;
+								height: 100px;
+								border-radius: 1rem;
+								word-wrap: break-word;
+								.votes-no-img {
+									font-size: 1rem;
+								}
+								&:hover {
+									background-color: rgba(0, 0 ,0, 0.5);
+									opacity: 0.75;
+								}
+							}
+							&:hover span, &:hover img{
+								opacity: 1;
+							}
+						}
+					}
+					&:first-child {
+						display: block;
+					}
+				}
+				&:hover {
+					color: white;
+					background-color: rgba(0, 0, 0, 0.5);
+				}
+			}
+		}
+		&:hover {
+			color: white;
+			border-color: $gray;
+		}
+		&:hover hr {
+			color: white;
+		}
+		&:hover h1 {
+				animation: glitch 1s linear 1;
+		}
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.tournament-container {
+		.tournaments-box {
+			> h1 {
+				font-size: 1.5rem;
+			}
+			> ul {
+				li {
+					font-size: 0.65rem;
+				}
+			}
+		}
+	}
+}

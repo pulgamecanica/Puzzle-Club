@@ -1,1 +1,60 @@
-<%= @tournaments %>
+<div class="tournament-container">
+	<div class="tournaments-box">
+		<h1>Tournaments</h1>
+		<h6>Welcome to the tournaments. Vote for the next puzzle!</h6>
+		<hr>
+		<ul>
+			<li><span class="num-stat"><%= @tournaments.count %></span> Active</li>
+			<li><span class="num-stat"><%= @tournaments.map { |t| t.votes.count }.sum %> </span><%= "Vote".pluralize(@tournaments.map { |t| t.votes.count }.sum) %></li>
+			<li><span class="num-stat"><%= @tournaments.map { |t| t.puzzle_contenders.count }.sum %></span> <%= "Contender".pluralize(2) %></li>
+		</ul>
+		<div class="tournaments-sliders">
+			<div class="slides-container">
+				<% @tournaments.each_with_index do |tournament, index| %>
+					<% if @tournaments.first.eql?(tournament) %>
+						<div class="slider-slide active" id="slide-<%= index %>">
+					<% else %>
+						<div class="slider-slide" id="slide-<%= index %>">
+					<% end %>
+						<h4><%= tournament.title %><br><span style="font-size: 50%;">Choose a puzzle</span></h4>
+						<ul>
+							<% tournament.puzzle_contenders.each do |contender| %>
+							<li>
+								<% if contender.puzzle.image.present? %>
+									<%= image_tag contender.puzzle.image%>
+									<span class="votes">
+										<%= contender.votes.count %>
+									</span>
+								<% else %>
+									<h6 class="contender-no-img"><%= contender.puzzle.title%>
+										<span class="votes-no-img">
+											<%= contender.votes.count %>
+										</span>
+									</h6>
+								<% end %>
+							</li>
+							<% end %>
+						</ul>
+					</div>
+				<% end %>
+				<% if @tournaments.any? %>
+					<div id="pagination">
+						<div href="#" class="disable-link">&laquo;</div>
+						<% @tournaments.each_with_index do |tournament, index| %>
+							<div data-tournamentid="<%= index %>" class="disable-link"><%= index %></div>
+						<% end %>
+						<div href="#" class="disable-link">&raquo;</div>
+					</div>
+				<% else %>
+					<br>
+					<br>
+					<br>
+					<hr>
+					<h1>0 tournaments available :(</h1>
+					<hr>
+				<% end %>
+			</div>
+		</div>
+		<% @tournaments %>
+	</div>
+</div>
