@@ -2,11 +2,9 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-
 document.addEventListener('turbolinks:load', function () {
 	let list = document.querySelector("#pagination").children;
 	for (let item of list) {
@@ -20,6 +18,8 @@ document.addEventListener('turbolinks:load', function () {
 				open_vote(document.querySelector("#vote-" + element.dataset.contenderid));
 			}, false)
 	);
+	let exit_list = document.querySelectorAll(".escape-puzzle");
+	exit_list.forEach(element => element.addEventListener("click", close_vote, false));
 	document.onkeydown = function(event) {
 		if (event.keyCode == 27) {
 			close_vote();
@@ -29,13 +29,11 @@ document.addEventListener('turbolinks:load', function () {
 		vote_container.style.display = "block";
 		vote_container.className += " vote-active";
 	}
-
 	function close_vote() {
 		let element = document.querySelector(".vote-active");
 		element.className = element.className.replace("vote-active", "");
 		element.style.display = "none";
 	}
-
 	function pagination(id) {
 		let current = document.querySelector(".active");
 		let current_id = parseInt(current.dataset.id);

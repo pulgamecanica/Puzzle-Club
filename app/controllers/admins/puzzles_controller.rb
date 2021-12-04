@@ -47,12 +47,11 @@ module Admins
 		end
 
 		private
-		  # Use callbacks to share common setup or constraints between actions.
+
 		  def set_puzzle
 		    @puzzle = Puzzle.find(params[:id])
 		  end
 
-		  # Only allow a list of trusted parameters through.
 		  def puzzle_params
 		    params.require(:puzzle).permit(:title, :description, :pieces, :start_date, :end_date, :image)
 		  end

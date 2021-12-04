@@ -7,21 +7,33 @@ $pink: #FFC0CB;
 $purple: #6B4E71;
 $black: #141414;
 * {
-	 box-sizing: border-box;
-	 padding: 0;
-	 margin: 0;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 hr {
 	margin: 0.5rem;
 }
 html {height: 100%;}
 body {
-	min-height: 100vh;
-	width: 100vw;
-	background-color: $black;
-	word-wrap: break-word;
 	color: $gray;
+	width: 100vw;
+	min-height: 100vh;
+	word-wrap: break-word;
+	background-color: $black;
 	font-family: 'Press Start 2P';
+}
+.notice {
+	width: 90vw;
+	z-index: 99;
+	top: -100px;
+	color: $black;
+	margin: 5px 5vw;
+	position: fixed;
+	text-align: center;
+	border-radius: 0.5rem;
+	background-color: white;
+	animation: disappear 8s linear 1;
 }
 .disable-link {
 	width: 100%;
@@ -32,15 +44,15 @@ body {
 	color: $purple;
 }
 .puzzle-piece-container {
-	overflow: hidden;
 	width: 100vw;
+	overflow: hidden;
 	.puzzle-piece-element {
-		position: relative;
 		display: flex;
+		position: relative;
 		&:hover > div {
 			border: 2px solid;
-			border-color: rgba(255, 255, 255, 0.5);
 			color: $black;
+			border-color: rgba(255, 255, 255, 0.5);
 		}
 		&:hover .home-page-icon {
 			display: none;
@@ -90,36 +102,36 @@ body {
 			}
 		}
 		.shelve-container {
-			display: none;
-			position: relative;
-			width: 100%;
 			top: 0;
 			left: 0;
+			width: 100%;
+			display: none;
+			position: relative;
 			.shelve-item {
-				transform: perspective(50em) rotateX(50deg);
-				text-decoration: none;
-				opacity: 0.95;
-				height: 120px;
-				width: auto;
-				border-radius: 1rem;
-				display: grid;
-				place-items: center;
-				position: absolute;
-				top: 30px;
 				left: 0;
+				top: 30px;
+				width: auto;
+				height: 120px;
+				opacity: 0.95;
+				display: grid;
+				position: absolute;
+				place-items: center;
+				border-radius: 1rem;
+				text-decoration: none;
+				transform: perspective(50em) rotateX(50deg);
 				img {
-					height: 120px;
 					width: auto;
+					height: 120px;
 					border-radius: 1rem;
 				}
 				> p {
-					background-color: rgb(230, 230, 230);
 					width: 100%;
+					color: $black;
 					height:  100%;
 					padding: 1rem;
-					border:  2px solid $black;
 					border-radius: 1rem;
-					color: $black;
+					border:  2px solid $black;
+					background-color: rgb(230, 230, 230);
 				}
 				&:nth-child(1) {left: 1vw;}
 				&:nth-child(2) {left: 9.5vw;}
@@ -129,8 +141,8 @@ body {
 				&:hover {
 					top: -10px;
 					z-index: 9;
-		  		box-shadow: 5px 10px 8px #888888;
-				  animation: image_show 2s linear 1;
+		  			box-shadow: 5px 10px 8px #888888;
+					animation: image_show 2s linear 1;
 					transform: perspective(0) rotateX(0);
 				}
 			}
@@ -141,14 +153,14 @@ body {
 	}
 	#puzzle-piece-4 {
 		p {
-			border-bottom: 1.5px solid white;
-			padding-bottom: 5px;
-			max-width: 90%;
 			margin: auto;
+			max-width: 90%;
+			padding-bottom: 5px;
+			border-bottom: 1.5px solid white;
 		}
 		h5 {
-			margin-top: 0.5rem;
 			color: white;
+			margin-top: 0.5rem;
 		}
 		.club-info-buttons {
 			display: none;
@@ -168,37 +180,37 @@ body {
 			animation: glitch_delay_2 4s linear 1;
 		}
 		&:hover .club-info-title {
-			display: block;
 			color: white;
+			display: block;
 			animation: glitch_delay 3s linear 1;
 		}
 	}
 }
 .home-page-icon {
-	text-align: center;
-	width: 100px;
-	height: 100px;
-	margin: 0 auto;
-	display: flex;
-	position: relative;
 	top: 0;
 	left: 0;
+	width: 100px;
+	height: 100px;
+	display: flex;
+	margin: 0 auto;
+	text-align: center;
+	position: relative;
 	justify-content: center;
 	.material-icons, .icon-42 {
 		margin: 0;
 		padding: 0;
-		position: absolute;
 		bottom: -150%;
 		font-size: 1000%;
+		position: absolute;
 	}
 }
 @media only screen and (max-width: 700px) {
 	.puzzle-piece-container {
+		width: 100%;
+		height: 100%;
+		margin: auto;
 		display: grid;
 		align-items: center;
-		margin: auto;
-		height: 100%;
-		width: 100%;
  		#puzzle-piece-1 {
  			display: none;
 		}
@@ -214,9 +226,9 @@ body {
  				margin: auto 0;
  			}
  			.club-info-buttons {
+ 				bottom: 0.8rem;
  				position: absolute;
  				display: inline-block;
- 				bottom: 0.8rem;
  				width: 100%;
  				a {
  					padding: 0.5rem;
@@ -233,39 +245,39 @@ body {
 }
 @media only screen and (min-width: 701px) {
 	.puzzle-piece-container {
-		height: 100vh;
-		column-gap: 0;
 		row-gap: 0;
+		height: 100vh;
 		display: grid;
- 		grid-template-columns: 50% 50%;
- 		grid-template-rows: 50% 50%;
+		column-gap: 0;
  		grid-template-areas: 
  			"piece-1 piece-2"
  			"piece-3 piece-4";
+ 		grid-template-rows: 50% 50%;
+ 		grid-template-columns: 50% 50%;
  		#puzzle-piece-1 {
-			background-color: $pink;
  			grid-area: piece-1;
+			background-color: $pink;
 	 	}
 	 	#puzzle-piece-2 {
-			background-color: $purple;
 	 		grid-area: piece-2;
+			background-color: $purple;
 	 	}
 		#puzzle-piece-3 {
-			background-color: $blue;
 	 		grid-area: piece-3;
+			background-color: $blue;
 			.shelve-container {
 				.shelve-item {
 		 			img, p{
-						height: 30vh;
 						width: 15vw;
+						height: 30vh;
 						border-radius: 1rem;
 					}
 				}
 			}
  		}
  		#puzzle-piece-4 {
-			background-color: $black;
 	 		grid-area: piece-4;
+			background-color: $black;
 	 	}	
  	} 	
 }

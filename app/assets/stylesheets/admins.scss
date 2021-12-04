@@ -4,9 +4,9 @@ $light_gray: rgba(210, 210, 210, 0.6);
 $dark_gray: rgba(200, 200, 200, 1);
 $black: #292b2c;
 * {
-	 box-sizing: border-box;
-	 padding: 0;
 	 margin: 0;
+	 padding: 0;
+	 box-sizing: border-box;
 }
 hr {
 	margin: 0.5rem;
@@ -14,22 +14,22 @@ hr {
 html {height: 100%}
 body {min-height: 100vh;}
 .notice {
-	background-color: rgba(255, 200, 10, 1);	
-	text-align: center;
 	width: 50%;
-	border-radius: 1em;
-	margin: auto;
 	opacity: 0%;
+	margin: auto;
+	text-align: center;
+	border-radius: 1em;
 	animation: notice 10s ease-in-out;
+	background-color: rgba(255, 200, 10, 1);	
 }
 .shake {
 	animation: shake 2.5s infinite;
 }
 .notification-image-badge {	
-	position: absolute;
-	z-index: 9;
 	top: 5px;
 	right: 5px;
+	z-index: 9;
+	position: absolute;
 }
 .notification-image-container {
 	position: relative;
@@ -37,9 +37,9 @@ body {min-height: 100vh;}
 		width: 100%;
 	}
 	.notification-image-puzzle-button {
-		position: absolute;
-		bottom: 0.5rem;
 		margin: auto;
+		bottom: 0.5rem;
+		position: absolute;
 		width: 100%;
 		a {
 			opacity: 80%;
@@ -56,20 +56,20 @@ body {min-height: 100vh;}
 .tournament_puzzle_image {
 	margin: 1.25%;
 	width: 22.5%;
-	min-width: 160px;
 	height: 120px;
-	background-size: cover;
-	background-position: center;
+	min-width: 160px;
 	position: relative;
 	text-align: center;
 	border-radius: 0.5rem;
+	background-size: cover;
+	background-position: center;
 	.vote-count {
-		position: absolute;
+		bottom: 0;
 		width: 100%;
 		margin: auto;
 		padding: 0.5rem;
-		bottom: 0;
 		font-size: 120%;
+		position: absolute;
 	}
 }
 .date-field {
@@ -83,14 +83,14 @@ body {min-height: 100vh;}
 	display: inline;
 	form {
 		color: $blue;
-		vertical-align: middle;
 		display: inline-block;
+		vertical-align: middle;
 	}
 }
 .vote-icon {
 	color: pink;
-	margin-left: 0.2rem;
 	font-size: 120%;
+	margin-left: 0.2rem;
 	vertical-align: top;
 }
 .trash-icon {
@@ -102,31 +102,31 @@ body {min-height: 100vh;}
 .admin-jumbotron {
 	min-height: 100vh;	
 	.winner-badge {
-		vertical-align: bottom;
 		font-size: inherit;	
+		vertical-align: bottom;
 	}
 }
 .users-tooltip {
   position: relative;
   display: inline-block;
 	.tooltiptext {
+	  left: 50%;
+	  z-index: 1;
+	  bottom: 150%;
+	  padding: 5px 0;
 		font-size: 75%;
+	  position: absolute;
 	  visibility: hidden;
 	  text-align: center;
 	  border-radius: 6px;
-	  padding: 5px 0;
-	  position: absolute;
-	  z-index: 1;
-	  bottom: 150%;
-	  left: 50%;
 	  margin-left: -60px;
 		&:after {
-			content: "";
-		  position: absolute;
-		  top: 100%;
 		  left: 50%;
+		  top: 100%;
+			content: "";
 		  margin-left: -5px;
 		  border-width: 5px;
+		  position: absolute;
 		  border-style: solid;
 		  border-color: $black transparent transparent transparent;
 		}
@@ -158,15 +158,15 @@ body {min-height: 100vh;}
 	padding: 0;
 	height: 100vh;
 	.side_bar {
-		padding: 0;
 		margin: 0;
+		padding: 0;
 		background-color: $light_gray;
 		.side-bar-container
 		{
 			width: 100%;
 			.side-link {
-				background-color: $dark_gray;
 				border-color: $dark_gray;
+				background-color: $dark_gray;
 				&:hover {
 					opacity: 0.5;
 				}

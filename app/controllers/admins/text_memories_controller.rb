@@ -31,6 +31,5 @@ module Admins
 			def set_text_memory
 		    	@text_memory = TextMemory.find(params[:id])
 			end
-
 	end
 end

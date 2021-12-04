@@ -24,6 +24,7 @@ module Admins
 			def set_contender
 				@contender = PuzzleContender.find(params["puzzle_contender_id"])
 			end
+			
 			def set_vote
 				@vote = Vote.find(params[:id])
 			end

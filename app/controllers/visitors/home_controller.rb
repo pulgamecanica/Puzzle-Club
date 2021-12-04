@@ -16,16 +16,12 @@ module Visitors
         if @vote.save
           notice = "Vote was successfully submited!"
         else
-          notice = "Sorry Something went wrong..."
+          notice = "Invalid username..."
         end
       else
         notice = "Sorry you cannot vote for that contender... :("
       end
-      puts "*-" * 100
-      puts "    Result: #{notice}"
-      puts "    Contender nil?: #{@contender.nil?}"
-      puts "*-" * 100
-      redirect_to visitor_torunaments_path
+      redirect_to visitor_torunaments_path, notice: notice
     end
 
     private
