@@ -1,0 +1,49 @@
+<p class="text-end"><%= link_to 'New Contributor', new_contributor_path, class: 'btn btn-primary m-3' %></p>
+
+<div class="container">
+  <% @contributors.each do |contributor| %>
+    <div class="post-card">
+      <p class="spy-eye text-end">
+        <%= link_to edit_contributor_path(contributor), class: 'btn btn-primary m-3' do %>
+          <span class="material-icons">edit</span>
+        <% end %>
+        <%= link_to contributor, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger m-3" do %>
+          <span class="material-icons">delete</span>
+        <% end %>
+      </p>
+      
+      <%= link_to puzzle_path(contributor.puzzle), class: 'text-decoration-none' do %>
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-2">
+                <% if contributor.puzzle.image.present? %>
+                  <div class="header_image" style="background-image: url(<%= url_for(contributor.puzzle.image) %>);"></div>
+                <% end %>
+              </div>
+              <div class="col-md-6">
+                <h5 class="card-title"><%= contributor.puzzle.title %></h5>
+                <p class="card-text"><%= contributor.puzzle.description.truncate(150) %></p>
+              </div>
+              <div class="col-md-4 contributor-borders">
+                <p class="badge badge-pill badge-primary bg-secondary">
+                  <%= contributor.created_at.strftime("%d/%m/%Y") %>
+                </p>
+                <br>
+                <% if contributor.is_finished? %>
+                  <p class="badge badge-pill badge-success bg-success">
+                    Finished
+                  </p>  
+                <% else %>
+                  <p class="badge badge-pill badge-info bg-info">
+                    In progress
+                  </p>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

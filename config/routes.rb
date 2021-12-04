@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :puzzles
     resources :memories
     resources :tournaments
+    resources :contributors
     resources :text_memories
     resources :image_memories
     resources :puzzle_contenders, only: [:new, :create, :destroy] do
@@ -15,8 +16,8 @@ Rails.application.routes.draw do
   scope module: 'visitors' do
     root to: "home#index"
     post 'votes', to: 'home#votes'
-    get '/home/tournaments'  => 'home#tournaments', as: 'visitor_torunaments'
-    get '/visitors/puzzles/index' => 'puzzles#index', as: 'visitors_puzzles'
     get '/visitors/puzzles/:id' => 'puzzles#show', as: 'visitors_puzzle' 
+    get '/visitors/puzzles/index' => 'puzzles#index', as: 'visitors_puzzles'
+    get '/home/tournaments'  => 'home#tournaments', as: 'visitor_torunaments'
   end
 end

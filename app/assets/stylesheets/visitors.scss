@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 @import 'tournaments';
 @import 'visitors_animations';
 $gray: #696969;
@@ -6,10 +5,17 @@ $blue: #D5F4CD;
 $pink: #FFC0CB;
 $purple: #6B4E71;
 $black: #141414;
+
+@font-face {
+	font-family: "Press Start 2P";
+	src: url("/assets/PressStart2P-Regular");
+}
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	font-family: "Press Start 2P";
 }
 hr {
 	margin: 0.5rem;
@@ -21,7 +27,45 @@ body {
 	min-height: 100vh;
 	word-wrap: break-word;
 	background-color: $black;
-	font-family: 'Press Start 2P';
+	//font-family: 'Press Start 2P';
+}
+.logo-home {
+	width: 60px;
+	z-index: 29;
+	height: 60px;
+	position: fixed;
+	display: inline-block;
+	a {
+		display: inline-block;
+		span {
+			z-index: 9;
+			color: $gray;
+			padding: 10px;
+			position: fixed;
+			font-size: 40px;
+			transform: rotate(270deg);
+			&:hover {
+				color: white;
+			}
+		}
+		p {
+			z-index: 10;
+			color: $gray;
+			height: 60px;
+			display: grid;
+			font-size: 10px;
+			margin-top: 2px;
+			position: relative;
+			text-align: center;
+			align-items: center;
+		}
+	}
+	&:hover span {
+		color: white;
+	}
+	&:hover p {
+		animation: glitch_delay 1s linear 1; 
+	}
 }
 .notice {
 	width: 90vw;
@@ -74,11 +118,13 @@ body {
 		}
 	}
 	#puzzle-piece-1 {
+		z-index: 39;
 		&:hover .material-icons {
 			display: none !important;
 		}
 	}
 	#puzzle-piece-2 {
+		z-index: 39;
 		.tournament-list {
 			display: none;
 			li {
@@ -95,6 +141,7 @@ body {
 		}
 	}
 	#puzzle-piece-3 {
+		z-index: 39;
 		h1 {
 			a {
 				color: $black;
@@ -152,6 +199,7 @@ body {
 		}
 	}
 	#puzzle-piece-4 {
+		z-index: 39;
 		p {
 			margin: auto;
 			max-width: 90%;

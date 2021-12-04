@@ -31,6 +31,9 @@ body {min-height: 100vh;}
 	z-index: 9;
 	position: absolute;
 }
+.contributor-borders {
+	border-left: 1px solid gray;
+}
 .notification-image-container {
 	position: relative;
 	> img {

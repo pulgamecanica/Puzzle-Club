@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Puzzle:</strong>
+  <%= @contributor.puzzle_id %>
+</p>
+
+<p>
+  <strong>Is finished?:</strong>
+  <%= @contributor.is_finished? %>
+</p>
+
+<%= link_to 'Edit', edit_contributor_path(@contributor) %> |
+<%= link_to 'Back', contributors_path %>

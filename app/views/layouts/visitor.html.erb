@@ -13,6 +13,12 @@
 
   <body>
     <p class="notice"><%= notice %></p>
+    <span class="logo-home">
+      <%= link_to root_path, class: "disable-link" do %>
+        <span class="material-icons">extension</span>
+        <p>42</p>
+      <% end %>
+    </span>
     <%= yield %>
   </body>
 </html>
