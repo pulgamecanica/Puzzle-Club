@@ -19,20 +19,33 @@
 						<h4><%= tournament.title %><br><span style="font-size: 50%;">Choose a puzzle</span></h4>
 						<ul>
 							<% tournament.puzzle_contenders.each do |contender| %>
-							<li>
-								<% if contender.puzzle.image.present? %>
-									<%= image_tag contender.puzzle.image%>
-									<span class="votes">
-										<%= contender.votes.count %>
-									</span>
-								<% else %>
-									<h6 class="contender-no-img"><%= contender.puzzle.title%>
-										<span class="votes-no-img">
+								<li class="puzzle-contender-image" data-contenderid="<%= contender.id%>">
+									<% if contender.puzzle.image.present? %>
+										<%= image_tag contender.puzzle.image%>
+										<span class="votes">
 											<%= contender.votes.count %>
 										</span>
-									</h6>
-								<% end %>
-							</li>
+									<% else %>
+										<h6 class="contender-no-img"><%= contender.puzzle.title%>
+											<span class="votes-no-img">
+												<%= contender.votes.count %>
+											</span>
+										</h6>
+									<% end %>
+								</li>
+								<div class="vote-container" id="vote-<%= contender.id %>">
+									<div class="vote-form">
+										<h1>Vote for <%= contender.puzzle.title %>
+											<br>
+											<span>Enter your intra username</span>
+										</h1>
+										<%= render "vote_form", vote: contender.votes.build %>
+										<ul class="wizard">
+											<li><span>h</span>help</li>
+											<li><span>ESC</span>exit!</li>
+										</ul>
+									</div>
+								</div>
 							<% end %>
 						</ul>
 					</div>

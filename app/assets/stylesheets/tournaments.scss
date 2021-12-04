@@ -4,7 +4,9 @@ $blue: #D5F4CD;
 $pink: #FFC0CB;
 $black: #141414;
 $purple: #6B4E71;
+$green: rgb(0, 128, 0);
 .tournament-container {
+	color: $gray; 
 	margin: 0;
 	padding: 0;
 	height: 100vh;
@@ -19,7 +21,7 @@ $purple: #6B4E71;
 		overflow: hidden;
 		flex-flow: column;
 		border-radius: 0.25rem;
-		border: 2px solid $purple;
+		border: 2px solid $gray;
 		.num-stat {
 			color: $purple;
 		}
@@ -72,6 +74,69 @@ $purple: #6B4E71;
 					transition: ease-out;
 					padding-top: 0.5rem;
 					height: 90% !important;
+					.vote-container {
+						width: 100vw;
+						position: absolute;
+						display: none;
+						.vote-form {
+							position: fixed;
+							height: 90vh;
+							width: 100vw;
+							top: 5vh;
+							display: grid;
+							align-items: center;
+							z-index: 19;
+							border-radius: 1rem;
+							color: $green;
+							background-color: $black;
+							border: 2px solid $gray;
+							transition: ease;
+							p {
+								text-align: left;
+								label {
+								cursor: pointer;
+								}
+							}
+							h1 {
+								position: absolute;
+								top: 10px;
+								width: 100vw;
+								color: white;
+								> span {
+									font-size: 50%;
+								}
+							}
+							.wizard {
+								position: absolute;
+								bottom: 0;
+								padding: 0.5rem;
+								display: inline-block;
+								li {
+									margin-right: 5vw;
+								}
+								span {
+									background-color: white;
+									margin-right: 10px;
+									padding: 2px;
+								}
+							}
+							.input {
+								vertical-align: center;
+								display: inline;
+								margin-bottom: 2rem;
+							}
+							input {
+								font-family: 'Press Start 2P';
+								padding: 0.5rem;
+							}
+							.submit-vote {
+								display: inline-block;
+								input {
+									margin-top: 2rem;
+								}
+							}
+						}
+					}
 					ul {
 						position: relative;
 						display: flex;
@@ -86,6 +151,7 @@ $purple: #6B4E71;
 							position: relative;
 							bottom: 0;
 							left: 0;
+							cursor: pointer;
 							display: inline-block;
 							.votes, .votes-no-img {
 								position: absolute;
@@ -142,7 +208,7 @@ $purple: #6B4E71;
 		}
 		&:hover {
 			color: white;
-			border-color: $gray;
+			border-color: $purple;
 		}
 		&:hover hr {
 			color: white;

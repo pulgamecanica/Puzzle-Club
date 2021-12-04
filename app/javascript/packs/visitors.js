@@ -6,12 +6,36 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-document.addEventListener("DOMContentLoaded", function(event){
+
+document.addEventListener('turbolinks:load', function () {
 	let list = document.querySelector("#pagination").children;
 	for (let item of list) {
 		console.log(item.dataset.tournamentid);
 		item.addEventListener("click", function(){pagination(item.dataset.tournamentid);}, false);
 	}
+	let puzzles = document.querySelectorAll(".puzzle-contender-image");
+	puzzles.forEach(
+		element =>
+			element.addEventListener("click", function(){
+				open_vote(document.querySelector("#vote-" + element.dataset.contenderid));
+			}, false)
+	);
+	document.onkeydown = function(event) {
+		if (event.keyCode == 27) {
+			close_vote();
+		}
+	};
+	function open_vote(vote_container) {
+		vote_container.style.display = "block";
+		vote_container.className += " vote-active";
+	}
+
+	function close_vote() {
+		let element = document.querySelector(".vote-active");
+		element.className = element.className.replace("vote-active", "");
+		element.style.display = "none";
+	}
+
 	function pagination(id) {
 		let current = document.querySelector(".active");
 		let current_id = parseInt(current.dataset.id);
