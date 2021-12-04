@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
   scope module: 'visitors' do
     root to: "home#index"
-    get 'votes', to: 'home#votes'
+    post 'votes', to: 'home#votes'
     get '/home/tournaments'  => 'home#tournaments', as: 'visitor_torunaments'
     get '/visitors/puzzles/index' => 'puzzles#index', as: 'visitors_puzzles'
     get '/visitors/puzzles/:id' => 'puzzles#show', as: 'visitors_puzzle' 

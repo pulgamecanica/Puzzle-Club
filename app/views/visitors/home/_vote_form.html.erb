@@ -5,8 +5,8 @@
         	<%= form.text_field :username %>
 		</label>
 	</p>
-
+	<%= form.hidden_field :puzzle_contender_id, value: vote.puzzle_contender.id %>	
   	<div class="actions submit-vote">
-    	<%= form.submit %>
+    	<%= form.submit "Vote" %>
   	</div>
 <% end %>
