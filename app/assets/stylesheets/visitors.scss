@@ -7,15 +7,15 @@ $purple: #6B4E71;
 $black: #141414;
 
 @font-face {
-	font-family: "Press Start 2P";
-	src: url("/assets/PressStart2P-Regular");
+	font-family: "Pixel Font";
+	src: font-url("/assets/PressStart2P-Regular");
 }
 
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: "Press Start 2P";
+	font-family: "Pixel Font";
 }
 hr {
 	margin: 0.5rem;
@@ -27,7 +27,6 @@ body {
 	min-height: 100vh;
 	word-wrap: break-word;
 	background-color: $black;
-	//font-family: 'Press Start 2P';
 }
 .logo-home {
 	width: 60px;
