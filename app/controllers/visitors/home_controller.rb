@@ -3,7 +3,8 @@ module Visitors
     before_action :set_puzzle_contender, only: %i[ votes ]
     def index
       @tournaments = Tournament.all
-      @puzzle_shelve = Puzzle.all.order(:created_at).max(5)
+      @puzzle_shelve = Puzzle.all.order(:created_at).select { |x| x.image.present? }.max(5)
+      @contributors = Contributor.where(is_finished: false)
     end
 
     def tournaments
@@ -24,6 +25,9 @@ module Visitors
       redirect_to visitor_torunaments_path, notice: notice
     end
 
+    def current_puzzle
+      @contributors = Contributor.where(is_finished: false)
+    end
     private
 
       def set_puzzle_contender

@@ -1,11 +1,21 @@
 <div class="puzzle-piece-container">
 	<div class="puzzle-piece-element" id="puzzle-piece-1">
-		<div class="piece-section ">
-			<h1>PUZZLE</h1>
-			<div class="home-page-icon">
-				<span class="material-icons">extension</span>
+		<%= link_to current_puzzle_path, class: "disable-link" do %>
+			<div class="piece-section">
+				<h1>PUZZLE</h1>
+				<div class="contributor">
+					<% if @contributors.any? %>
+						<% if @contributors.first.puzzle.image.present? %>
+							<%= image_tag  @contributors.first.puzzle.image %>
+						<% else %>
+							<p>Open <%= @contributors.first.puzzle.title %></p>
+						<% end %>
+					<% else %>
+						<p>No puzzles ATM... :(</p>
+					<% end %>
+				</div>
 			</div>
-		</div>
+		<% end %>
 	</div>
 	
 	<div class="puzzle-piece-element" id="puzzle-piece-2">
@@ -22,7 +32,6 @@
 						<li>No votes :(</li>
 					<% end %>
 				</ul>
-
 				<div class="home-page-icon">
 					<span class="material-icons">emoji_events</span>
 				</div>
@@ -61,13 +70,12 @@
 					<br>
 					This Club host two activities:
 					<ul>
-						<li><%= link_to "Jigasaw Puzzles", visitors_puzzles_path %></li>
-						<li><%= link_to "Lego Building", visitors_puzzles_path %></li>
-						
+						<li>Jigasaw Puzzles</li>
+						<li>Lego Building</li>
 					</ul>
 					<div class="club-info-buttons">
 						<%= link_to "Tournament", visitor_torunaments_path %>
-						<a href="">CurrentPuzzle</a>
+						<%= link_to "CurrentPuzzle", current_puzzle_path %>
 					</div>
 				</h5>
 			</div>

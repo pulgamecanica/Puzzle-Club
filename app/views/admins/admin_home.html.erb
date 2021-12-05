@@ -5,7 +5,9 @@
   <p class="lead">Total Puzzles: <%= @puzzles.count %></p>
   <p class="lead">Active Torunaments: <%= @tournaments.select { |tournament| tournament.active }.count %></p>
   <p class="lead">Total Torunaments: <%= @tournaments.count %></p>
+  <p class="lead">Total Votes: <%= @tournaments.map { |x| x.votes.count }.sum %></p>
+  <p class="lead">Total Contributors: <%= @contributors.count %></p>
   <p class="lead">
-    <a class="btn btn-primary btn-lg" href="#" role="button">Website</a>
+    <%= link_to "Website", root_path, class: "btn btn-primary btn-lg" %>
   </p>
 </div>

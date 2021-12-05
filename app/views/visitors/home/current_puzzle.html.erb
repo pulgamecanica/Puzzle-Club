@@ -1,0 +1,21 @@
+<% @contributors.each do |contributor| %>
+	<div class="container">
+		<h1 class="title">
+			<%= contributor.puzzle.title %>
+			<hr>
+		</h1>
+		<div class="body-image">
+			<div class="image">
+				<% if contributor.puzzle.image.present? %>
+					<%= image_tag contributor.puzzle.image %>
+				<% end %>
+			</div>
+		</div>
+		<h5 class="body-text">
+			<%= contributor.puzzle.description %>
+			<br>
+			<p class="badge badge-purple"><%= contributor.puzzle.pieces %> pc</p>
+			<p class="badge badge-gray"><%= ((Time.now - contributor.created_at) / 1.hour).round %> hrs</p>
+		</h5>
+	</div>
+<% end %>

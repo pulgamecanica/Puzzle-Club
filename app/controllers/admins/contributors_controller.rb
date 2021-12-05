@@ -1,14 +1,10 @@
 module Admins
   class ContributorsController < AdminsController
-    before_action :set_contributor, only: %i[ show edit update destroy ]
+    before_action :set_contributor, only: %i[ edit update destroy ]
 
     # GET /contributors or /contributors.json
     def index
       @contributors = Contributor.all
-    end
-
-    # GET /contributors/1 or /contributors/1.json
-    def show
     end
 
     # GET /contributors/new
@@ -26,8 +22,8 @@ module Admins
 
       respond_to do |format|
         if @contributor.save
-          format.html { redirect_to @contributor, notice: "Contributor was successfully created." }
-          format.json { render :show, status: :created, location: @contributor }
+          format.html { redirect_to contributors_url, notice: "Contributor was successfully created." }
+          format.json { render :index, status: :created, location: contributors_url }
         else
           format.html { render :new, status: :unprocessable_entity }
           format.json { render json: @contributor.errors, status: :unprocessable_entity }
@@ -39,8 +35,8 @@ module Admins
     def update
       respond_to do |format|
         if @contributor.update(contributor_params)
-          format.html { redirect_to @contributor, notice: "Contributor was successfully updated." }
-          format.json { render :show, status: :ok, location: @contributor }
+          format.html { redirect_to contributors_url, notice: "Contributor was successfully updated." }
+          format.json { render :index, status: :ok, location: contributors_url }
         else
           format.html { render :edit, status: :unprocessable_entity }
           format.json { render json: @contributor.errors, status: :unprocessable_entity }

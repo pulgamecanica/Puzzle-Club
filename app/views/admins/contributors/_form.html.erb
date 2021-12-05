@@ -10,24 +10,30 @@
       </ul>
     </div>
   <% end %>
+  <div class="container">
+    <div class="field">
+      <%= form.label :puzzle_id, class: "form-control"%>
+      <%= form.collection_select :puzzle_id, Puzzle.all, :id, :title, {}, class: "form-control" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :puzzle_id %>
-    <%= form.text_field :puzzle_id %>
-  </div>
+    <div class="form-field">
+      <%= form.label :is_finished %>
+      <%= form.check_box :is_finished, class: "m-4" %>
+    </div>
 
-  <div class="field">
-    <%= form.label :is_finished %>
-    <%= form.check_box :is_finished %>
-  </div>
+    <div class="input-group form-field">
+      <div class="field-tag">
+        <div class="input-group-prepend" >
+          <span class="input-group-text tag-style">
+            <%= form.label :finish_date %>
+          </span>
+        </div>
+      </div>
+      <%= form.date_field :finish_date, class: 'form-control' %>
+    </div>
 
-
-  <div class="field">
-    <%= form.label :finish_date %>
-    <%= form.date_field :finish_date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="actions">
+      <%= form.submit 'Submit', :class => 'form-control btn btn-primary'  %>
+    </div>
   </div>
 <% end %>
