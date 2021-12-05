@@ -1,5 +1,16 @@
-<h1>Puzzles#show</h1>
-<p>Find me in app/views/puzzles/show.html.erb</p>
-<% if @puzzle.image.present? %>
-	<%= image_tag @puzzle.image%>
-<% end %>
+<div class="puzzle-horizontal">
+	<section>
+		<h1><%= @puzzle.title %></h1>
+		<h5><%= @puzzle.description %></h5>
+		<div class="image">
+			<% if @puzzle.image.present? %>
+				<%= image_tag @puzzle.image%>
+			<% end %>
+		</div>
+		<a class="disable-link memories-button" href="#memories">Memories</a>
+	</section>
+	<section>
+		<h1 id="memories"><%= @puzzle.title %></h1>
+		<p>Find me in app/views/puzzles/show.html.erb</p>
+	</section>
+</div>
