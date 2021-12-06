@@ -16,7 +16,7 @@
 					<% else %>
 						<div class="slider-slide" id="slide-<%= index %>" data-id="<%= index %>">
 					<% end %>
-						<h4><%= tournament.title %><br><span style="font-size: 50%;">Choose a puzzle</span></h4>
+						<h4><%= tournament.title %><br><span style="font-size: 50%;">Choose a puzzle</span><br><button style="font-size: 50%;">&nbspEnds at <%= tournament.end_date.strftime("%d/%m/%Y") %>&nbsp</button></h4>
 						<ul>
 							<% tournament.puzzle_contenders.each do |contender| %>
 								<li class="puzzle-contender-image" data-contenderid="<%= contender.id%>">
